@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form action="https:localhost:3000" method="get">
+      <fieldset>
+        <legend>학사정보 조회서비스</legend>
+        <section>
+          <label for="name"> 입학년도 </label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="년도월일 입력"
+          />
+        </section>
+        <section>
+          <label for="name"> 이름 </label>
+          <input type="text" name="name" id="name" placeholder="본명입력" />
+        </section>
+        <section>
+          <label for="num"> 학번 </label>
+          <input type="text" name="num" id="num" placeholder="총 8자리 숫자" />
+        </section>
+        <section>
+          <label for="class"> 학과 </label>
+          <input type="text" name="class" id="class" placeholder="예)의예과" />
+        </section>
+      </fieldset>
+      <input type="submit" value="조회하기" />
+    </form>
+  </body>
+</html>
