@@ -124,6 +124,31 @@ ex)<col span="2" style="background-color: #f00" />
 1)fieldset: 해당 form요소가 어떤 성격인지를 구분하기 위한 목적 사용
 2)legent: fieldset의 타이틀 생성해주는 역할 
 
+*HTML5 어려워하는 이유
+>공간분할태그
+1) block요소 태그: 
+- 한 줄 (*한 행)을 모두 가져가는 속성
+- div / header / h(n) /p
+- width / height / margin / padding 등 모두 다 적용 가능
+
+2) inline요소 태그:
+- 본인의 너비 및 높이값만큼만 공간을 차지하는 속성
+- span / label / input 
+- width / height 적용 불가
+- margin / padding 좌우측 적용 가능 / 상하측 적용 가능
+
+3) inline-block요소 속성 
+
+
+*Semantic 태그:
+(의미를 갖고있는)
+header: 문서상에 헤더의 역할 => 머릿글 || 인트로역할 
+nav: GNB || LNB 와 같은 네비게이션 목록 역할 
+aside: 사이드 측면 영역의 배너 혹은 지면 역할
+section: 실제 문서상의 본문 역할 
+article: section태그 안에 소단락 (*세부영역) 나누는 역할
+footer: 문서상에 푸터의 역할 => 꼬리말 || 에필로그 역할 
+
 
 
 

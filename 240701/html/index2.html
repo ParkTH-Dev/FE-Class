@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      header > h1 {
+        color: red;
+      }
+      input[type="text"] {
+        background-color: red;
+      }
+      input[type="password"] {
+        background-color: blue;
+      }
+      #same-position > h1 + h2 {
+        color: #0f0;
+      }
+
+      #same-position > h1 ~ h2 {
+        background-color: orange;
+      }
+
+      .btn:hover {
+        color: red;
+      }
+      .btn:active {
+        background-color: #0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1 class="title">lorem ipsum</h1>
+      <div id="nav">
+        <h1>navigation</h1>
+      </div>
+    </header>
+    <form action="#" method="get">
+      <input type="text" />
+      <input type="password" />
+    </form>
+    <div id="same-position">
+      <h1>Header - 1</h1>
+      <h2>Header - 2</h2>
+      <h2>Header - 2</h2>
+      <h2>Header - 2</h2>
+      <h2>Header - 2</h2>
+    </div>
+    <h1 class="btn">User Action EVENT</h1>
+  </body>
+</html>
