@@ -12,7 +12,7 @@ const items = document.querySelectorAll("#card_items li");
 
 items.forEach((item) => {
   item.addEventListener("mouseover", () => {
-    item.style.transform = "translateY(-20px)";
+    item.style.transform = "translateY(-80px)";
     item.style.transition = "all 0.3s";
   });
   item.addEventListener("mouseout", () => {
@@ -20,33 +20,12 @@ items.forEach((item) => {
   });
 });
 
-// 1. 상단 nav ul & li 태그를 인지시켜주기
-// 2. 상단 nav요소에게 마우스를 오버하면 이벤트가 실행된다.
-// 2_1. active라는 가상 클라스가 실행된다.(*텍스트가 검정색 & 두꺼워진다.)
-// 2_2. 하단에 lnb요소의 opactity value값이 1이 되어야 한다.
-// 3. mouseleave || mouseout 기능을 활용해서 마우스가 옆에 있는 li태그로 이동을 하면 기존에 이벤트 제거 // 신규이벤트가 이전에 설정했던 기능을 그대로 구현
+// 탑 버튼
+const topBtn = document.querySelector(".nav_btn");
+const menu = document.querySelector(".nav_lnb");
 
-const gnbLi = document.querySelectorAll(".topNav > li");
-
-gnbLi.forEach((li) => {
-  li.addEventListener("mouseover", () => {
-    const lnb = li.querySelector(".lnb");
-    const aTag = li.querySelector("a");
-    if (lnb) {
-      lnb.style.maxHeight = lnb.scrollHeight + "px";
-      lnb.style.opacity = "1";
-      aTag.classList.add("active");
-    }
-  });
-  li.addEventListener("mouseout", () => {
-    const lnb = li.querySelector(".lnb");
-    const aTag = li.querySelector("a");
-    if (lnb) {
-      lnb.style.maxHeight = "0";
-      lnb.style.opacity = "0";
-      aTag.classList.remove("active");
-    }
-  });
+topBtn.addEventListener("click", () => {
+  menu.classList.toggle("active");
 });
 
 // background Image change
