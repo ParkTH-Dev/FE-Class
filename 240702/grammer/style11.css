@@ -1,0 +1,92 @@
+@import url(./reset6.css);
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.tab-inner {
+  width: 300px;
+  height: 350px;
+
+  position: relative;
+  input[name="tabmenu"] {
+    display: none;
+  }
+  .content {
+    position: absolute;
+    top: 0;
+    left: -50px;
+    opacity: 0;
+    transition: all 0.5s;
+  }
+  .heading {
+    .text1,
+    .text2,
+    .text3 {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 100px;
+      height: 100px;
+      background-color: crimson;
+      color: white;
+      font-size: 30px;
+      font-weight: 800;
+      border-radius: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(-50px);
+      transition: all 0.5s;
+      span {
+        font-size: 20px;
+        font-weight: 500;
+      }
+    }
+    .text2 {
+      background-color: dodgerblue;
+    }
+    .text3 {
+      background-color: yellowgreen;
+    }
+  }
+  .btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    position: absolute;
+    bottom: 10px;
+    label {
+      width: 20px;
+      height: 20px;
+      border-radius: 20px;
+      background-color: lightgray;
+      cursor: pointer;
+      text-indent: -9999px;
+    }
+  }
+  input[id="tab1"]:checked ~ .slide1,
+  input[id="tab2"]:checked ~ .slide2,
+  input[id="tab3"]:checked ~ .slide3 {
+    opacity: 1;
+    left: 0;
+  }
+  input[id="tab1"]:checked ~ .btn label[for="tab1"],
+  input[id="tab2"]:checked ~ .btn label[for="tab2"],
+  input[id="tab3"]:checked ~ .btn label[for="tab3"] {
+    background-color: crimson;
+  }
+  input[id="tab1"]:checked ~ .heading .text1,
+  input[id="tab2"]:checked ~ .heading .text2,
+  input[id="tab3"]:checked ~ .heading .text3 {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+  }
+}

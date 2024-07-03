@@ -1,0 +1,242 @@
+1.UI/UX 관련 내용 => 피그마 툴 / 단일페이지
+ / UX파트 > 기획요소
+
+2.html, css 기초 문법 -> js(반응형 / 선택자 실습예제)
+
+3. 1시간 => 첫번째 프로젝트 준비
+
+----------------------------------------------------------------
+Lo-fi wireframe
+=>Lo-fi : Low Fidelity(저품질)
+Hi-fi wireframe
+=>Hight Fidelity(고품질)
+
+전체너비: 375px
+컨텐츠너비: 327px
+좌우측 패딩: 48px / 2 = 24px
+
+피그마 UI작업시 Component를 왜 사용하는가?
+개별적인 사이즈 변경을 최소화 + 통일감 있는 일관된 UI 디자인을 하기 위해 Component를 사용한다.
+
+Instance는 무조건 부모요소인 Component 디자인 가이드를 무조건 상속 받는다.
+그래서 Instance는 독립적인 size 변경을 할 수 없다.
+>폰트 컬러 / 폰트 사이즈는 수정 가능
+
+예외사항이 생겼을시! detach Instance: Component와의 연결을 해제한다.
+
+
+<Figma 핵심기능>
+1. AutoLayout
+2. LayoutGrid
+3. Componenet / instance
+4, Prototype
+5. Style Guide (Font / Color)
+6. Plugin (iconify / feather icons / unsplash)
+
+
+*작명
+1)cammel 표기법: contentTitle
+2)sneak 표기법: content_title
+3)헝가리언 표기법: ContentTitle
+
+
+
+--------------------html--------------------
+<html: hyper text markup language>
+html5
+
+-기본 속성이 없는 태그: 빈태그
+-반드시 속성과 속성값이 필요한 태그
+
+1. hn태그: heading태그(h1: 32px)
+2. a태그: anchor태그
+1개 요소 안에서 복수의 링크 넣기
+<map name="eventmap">
+      <area
+        shape="rect"
+        coords="153,208,282,278"
+        href="https://www.nike.com"
+        alt="nikeKorea"
+        target="_blank"
+      />
+좌표찾는 사이트:https://www.image-map.net/
+
+3. p태그: paragraph태그
+  -dummy 문장을 활용해서 임시로 문자열 입력(lorem)
+
+4. br태그: break 태그
+
+5. hr태그: Horizonatal Ruler태그
+single tag // multi tag (<hr/> // <h1> </h1>)
+
+6.audio / video
+-source태그를 활용해서 src=""를 활용하는게 일반적
+-엔터회사가 아니면 실무에서는 굳이? 활용하지 않는다.
+
+7.목록태그
+ul: unorder list
+ol: order list
+*중첩목록!
+
+8. 테이블태그
+- table에는 tr(*행) / td(table data 열) 들어간다.
+-열 가운데에서 대표격인: 열 th(table header)
+-html5 문법 핵심: semantic태그(*의미없이 사용하는 div태그 지양)
+-만약 table > thead / tbody / tfoot
+-colspan => 열을 병합하는 기능
+-rowspan => 행을 병합하는 기능
+-row(행)을 그룹하는 것은 어렵지 않음
+-colimn(열)을 그룹하는 것은 1가지 방법 
+(colgroup > col: 몇개의 열을 선택 => span)
+ex)<col span="2" style="background-color: #f00" />
+-thead & tfoot > colgroup :스타일 우선 적용권을 가지고 있다
+
+9.mark태그: 텍스트 형광
+
+10.b태그: bold태그
+
+11.figure & figcaption: 보통 일반적으로 테이블 태그 등을 사용할 때, 해당 요소의 타이틀을 정의하고자 할 때
+
+12. form 태그*
+- action, method 속성을 갖고있음
+-action: client(*웹브라우저)로 부터 특정 값을 받아서 server로 해당 값을 전송을 해야할 시, 전송할 위치 경로를 정의하는 속성
+-method: 사용자에게 값을 받아서 처리하는 방식을 어떻게 할 것인지 구분하기 위한 속성 
+ 1)get: 사용자가 입력한 값을 서버에게 전달을 한 경우, 해당 값에 매칭되어지는 페 이지를 서버가 반환하도록 하는 방식
+ 
+ 2)post: 단순히 특정 페이지를 그냥 가져오는것이 아니라
+ 사용자가 입력한 값을 반영한 업데이트되어진 페이지를 가져오고 싶을 때 사용하는  method방식 ex)유튜브 페이지 / 댓글 
+
+- label: for속성값 = input id 속성값 일치하는 경우, label태그로  input태그를 선택할 수 있도록 할 수 있음
+
+- 입력양식태그를 같이 사용해야만 form태그는 제 기능을 할 수 있음
+- input type="text": 아이디 및 텍스트 값을 받고자 할 때
+- input type="password": 비밀번호같은 값을 받고자 할때
+- input type="radio": 여러개 후보들 중에 1개를 선택하고자 할때
+- input type="checkbox": 여러개 후보들을 동시에 선택하고자 할때
+- input type="file": 서버에 어떤 데이터를 업로드 하고자 할 때
+
+-여러개의 옵션들 중에서 하나를 선택할 수 있도록 해주는 form 입력양식 태그 => select태그 
+-select태그의 경우, 내부적으로 option 태그와 함께 사용해야만 정상적인 기능을 구현할 수 있음
+(option태그 중에서 메뉴명으로는 출력이 되나,실제 사용자가 선택하지 못하도록 설정 => selected disabled 속성)
+-option 요소들을 그룹화 할 수 있음:optgroup이라는 태그 사용
+
+-form태그 내부 요소들을 하나로 그룹핑하고, 해당 요소들의 대표 타이틀을 생성!
+1)fieldset: 해당 form요소가 어떤 성격인지를 구분하기 위한 목적 사용
+2)legent: fieldset의 타이틀 생성해주는 역할 
+
+
+
+
+--------------------피그마--------------------
+
+특정 웹페이지 내 최상단 네비게이션 메뉴 >GNB: Global Navigation Bar / Banner
+LNB: Local Navigation Bar
+
+smart animate :  레이아웃 구조 및 이름을 절대 변경x
+(처음 원본데이터를 생성 => 마우스 이벤트 부여 => 편집데이터 페이지를 출력)
+
+
+
+--------------------Html--------------------
+
+html 2가지 분류 (Inline vs block)*
+block: 
+하나의 행을 모두 차지하도록 설정
+ex)div
+inline:
+본인의 너비 및 높이값만큼만 차지하도록 설정
+ex)span
+
+inline-block태그
+태생적으로 inline / block
+
+-프로그래밍 언어 영역 -> 짝수(even) / 홀수(odd)
+
+-----------------------------------------
+chat gpt를 스마트하게 활용
+>에러 혹은 문제 발생 => 최소한 1번 이상의 스스로 고민해라(gpt쓰기 전에)
+>gpt활용해서 문제 해결 후 => 스스로 최소 1번 이상 직접 코드를 작성하며
+원리를 곱씹어봐라.
+
+GUI방식:
+-Graphic User Interface(*사용자로 하여금 눈에 보여지는 아이콘 혹은 이미지들을 제어할 수 있도록 만들어진 인터페이스 형식)
+CLI방식:
+- Command Line Interface (* 특정 기능을 구현하기 위해 명령프롬프트를 사용할 수 있는 터미널에 접속해서 명령어로 요소들을 제어하는 인터페이스 방식)
+
+
+API: JSON => javascript Object Notation
+
+어떤 결과값을 도출 : 방법 다양
+
+
+---------------git & github---------------
+1. git => 형상기억관리 툴 / 버전관리 툴
+
+2. git => fe || be 웹 개발 => 필수!
+
+3. git 관련 책 => 방대한 지식 양
+
+4. git
+ -working Dir: 현재 작업중인 로컬 컴퓨터 안에 있는 루트 디렉토리 의미
+ 
+ -staging area: git에 커밋하기전 단계로 commit을 할 데이터를 보관하는 장소
+
+ -git Dir: 실제 버전 관리를 하기 위해서 commit을 한 데이터들이 저장되어있는 장소
+
+ -git Hub: 나의 로컬 컴퓨터에 commit된 데이터를 내가 아닌 협업 개발자들도 같이 공유해서 사용할 수 있도록 만들어진 git의 원격 저장소
+
+5.git을 사용하려면
+1) git설치:
+-로컬컴퓨터에 gitBash 프로그램 설치
+-git -v: 로컬 컴퓨터에 설치된 gitBash 버전 확인
+-git -config --list: 로컬 컴퓨터에 저장된 git소유자의 프로필 정보를 확인 할 수 있다.
+
+2)git-hub 계정 생성
+
+3)git-hub 계정
+-계정 name & 계정 email
+-Part-THdev
+-xotj2635@naver.com
+
+4) 로컬컴퓨터에 나의 git 정보를 세팅
+git config --global user.name "Part_THdev"
+git config --global user.email "xotj2635@naver.com"
+
+5)로컬컴퓨터에 나 말고 다른 사람의 정보
+- 관리자 모드(*전역): git config --global --unset credential.helper
+- 일반 모드(*로컬): git config --local --unset credential.helper
+- 시스템: git config --system --unset credential.helper
+
+6)기존 email혹은 name을 수정하고자 할 때
+-git config --unset (--global) user.name
+-git config --unset user.email
+
+7) 로컬 git 저장소 & 원격 gitHub저장소를 연결
+-gitHub 저장소: repository => 폴더
+-로컬 컴퓨터 신규 폴더 생성 => daily commit(*오늘 날짜 폴더 생성)
+-https://github.com/Part-THdev/FE-Class.git
+
+8)로컬 컴퓨터에서 staging area 생성
+-git init
+
+9) .git & repository 연결
+-git remote add origin https://github.com/Part-THdev/FE-Class.git (레포지토리 URL)
+-git remote -v(*정상적 연결 확인)
+
+10) 나의 data를 staging area로 input을 하고자 할때
+-git add .
+-git status
+
+11) 커밋을 하기 위한 메세지 기록
+-내가 언제 어떤 목적으로 커밋을 했는가 인지하기 위한 목적
+-git commit -m "240628"
+
+12) 원격 레포지토리로 data를 commit
+-git push origin master
+
+
+
+-git push origin master
+
+
+
