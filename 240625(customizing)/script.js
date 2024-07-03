@@ -20,9 +20,9 @@ items.forEach((item) => {
   });
 });
 
-// 탑 버튼
+// nav 버튼
 const topBtn = document.querySelector(".nav_btn");
-const menu = document.querySelector(".nav_lnb");
+const menu = document.querySelector(".nav_snb");
 
 topBtn.addEventListener("click", () => {
   menu.classList.toggle("active");
