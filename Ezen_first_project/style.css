@@ -92,5 +92,9 @@ main {
     height: 50%;
     width: 80%;
     border: 1px solid red;
+
+    .first_items {
+      border: 1px solid red;
+    }
   }
 }
