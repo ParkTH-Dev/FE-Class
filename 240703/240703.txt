@@ -141,4 +141,25 @@ font: "style" "size"/"height" "family"
 
 
 ------------------------
+말줄임표 
+overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
 
+비디오 태그 css
+
+<video src="./img/visual.mp4" autoplay muted loop></video>
+
+figure {
+  width: 100%;
+  height: calc(100vh - 120px); //header값 제외 100vh
+  position: relative;
+  video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
