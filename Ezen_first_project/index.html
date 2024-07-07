@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,66 +8,190 @@
       src="https://kit.fontawesome.com/0283eb41ff.js"
       crossorigin="anonymous"
     ></script>
+    <!-- custom -->
     <title>Document</title>
     <link rel="stylesheet" href="./style.css" />
     <script defer src="./script.js"></script>
   </head>
   <body>
     <div id="wrapper">
-      <nav id="navigation">
-        <div class="nav_left">
-          <span>ParkTH-dev</span>
-        </div>
-        <div class="nav_right">
-          <div class="nav_right_first">icon</div>
-          <div class="nav_right_second">icon</div>
-        </div>
-      </nav>
-      <main>
-        <article class="first_article">
-          <div class="first_article_text">나는 누구일까요?</div>
-          <a class="first_article_arrow">
-            <i class="fa-solid fa-chevron-down"></i>
-          </a>
+      <header>
+        <nav id="navigation">
+          <div class="logo">
+            <a href="#first">ParkTH-dev</a>
+          </div>
+        </nav>
+      </header>
+      <section>
+        <article id="first" class="first">
+          <h1>나는 누구일까요?</h1>
+          <div class="arrow">
+            <a href="#second">
+              <i class="fa-solid fa-chevron-down"></i>
+            </a>
+          </div>
         </article>
-        <article class="second_article">
+      </section>
+      <section>
+        <article id="second" class="second">
           <div class="title">
             <h1>안녕하세요!</h1>
             <h1><span>프론트엔드 개발자</span>를 꿈꾸는</h1>
             <h1><span>박태환</span>입니다!</h1>
           </div>
           <div class="img" />
+          <div class="arrow">
+            <a href="#third">
+              <i class="fa-solid fa-chevron-down"></i>
+            </a>
+          </div>
         </article>
-        <article class="thred_article">
-          <span>키워드 몰아보기</span>
+      </section>
+      <section>
+        <article id="third" class="third">
+          <h1>키워드 몰아보기</h1>
           <div class="items">
             <ul class="first_items">
-              <li class="item">
+              <li id="item1" class="item">
                 <span> 박태환 </span>
               </li>
-              <li class="item">
+              <li id="item2" class="item">
                 <span> 개발자 </span>
               </li>
             </ul>
             <ul class="second_items">
-              <li class="item">
+              <li id="item3" class="item">
                 <span> 몽실이 </span>
               </li>
-              <li class="item">
+              <li id="item4" class="item">
                 <span> 청주 </span>
               </li>
             </ul>
             <ul class="thred_items">
-              <li class="item">
+              <li id="item5" class="item">
                 <span> 커스텀 </span>
               </li>
-              <li class="item">
+              <li id="item6" class="item">
                 <span> 한화이글스 </span>
               </li>
             </ul>
           </div>
+          <div class="item1 modal">
+            <div class="modal_box">
+              <div class="img"></div>
+              <div class="contents">
+                <div class="content1">
+                  <div>
+                    <span>이름</span>
+                    <span>박태환</span>
+                  </div>
+                  <div>
+                    <span>생년월일</span>
+                    <span>1999.03.02</span>
+                  </div>
+                  <div>
+                    <span>거주지</span>
+                    <span>면목동</span>
+                  </div>
+                </div>
+                <div class="content2">
+                  <div>
+                    <span><i class="fas fa-phone"></i></span>
+                    <span>010-4924-2645</span>
+                  </div>
+                  <div>
+                    <span>@</span>
+                    <span>mongyoun48@naver.com</span>
+                  </div>
+                  <div>
+                    <span><i class="fab fa-github"></i></span>
+                    <span>https://github.com/ParkTH-Dev</span>
+                  </div>
+                </div>
+              </div>
+              <span id="item1" class="close">
+                <i class="fas fa-xmark"></i>
+              </span>
+            </div>
+          </div>
+          <div class="item2 modal">
+            <div class="modal_box">
+              <span id="item2" class="close">
+                <i class="fas fa-xmark"></i>
+              </span>
+              <div class="img"></div>
+              <span class="title"> 항상 발전하는 개발자! </span>
+              <div class="contnet">
+                <span>저는 항상 발전할 수 있는 개발자가 되고 싶습니다. </span>
+                <span>
+                  다양한 프로젝트에 도전하면서 실력을 키우고자 합니다.
+                </span>
+                <span>다른 분들과의 소통과 협업을 통해 시야를 넓히고, </span>
+                <span>문제 해결 능력을 향상시키는 것도 목표입니다. </span>
+                <span
+                  >이렇게 꾸준히 노력하여 좋은 개발자로 성장하고 싶습니다!</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="item3 modal">
+            <div class="modal_box">
+              <span id="item3" class="close">
+                <i class="fas fa-xmark"></i>
+              </span>
+            </div>
+          </div>
+          <div class="item4 modal">
+            <div class="modal_box">
+              <span id="item4" class="close">
+                <i class="fas fa-xmark"></i>
+              </span>
+            </div>
+          </div>
+          <div class="item5 modal">
+            <div class="modal_box">
+              <span id="item5" class="close">
+                <i class="fas fa-xmark"></i>
+              </span>
+              5
+            </div>
+          </div>
+          <div class="item6 modal">
+            <div class="modal_box">
+              <span id="item6" class="close">
+                <i class="fas fa-xmark"></i>
+              </span>
+              6
+            </div>
+          </div>
+          <div class="arrow">
+            <a href="#footer">
+              <i class="fa-solid fa-chevron-down"></i>
+            </a>
+          </div>
         </article>
-      </main>
+      </section>
+      <footer id="footer">
+        <div class="wrap">
+          <div class="text">
+            <span>함께 프론트엔드 개발 과정을 공부하는 동기 여러분!</span>
+            <span>끝까지 포기하지 말고 함께 목표를 이룰 수 있도록</span>
+            <span>파이팅입니다!</span>
+          </div>
+          <div class="qr">
+            <div class="img"></div>
+            <div class="qr_text">
+              <span
+                >휴대폰을 꺼내 QR코드를 찍어서 제가 만든 페이지를 모바일로
+                확인해보세요!</span
+              >
+            </div>
+          </div>
+          <div class="up_btn">
+            <a href="#first"> UP </a>
+          </div>
+        </div>
+      </footer>
     </div>
   </body>
 </html>
