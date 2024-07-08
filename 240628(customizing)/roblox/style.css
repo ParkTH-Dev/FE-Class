@@ -18,71 +18,60 @@ a {
 #wrapper {
   padding: 30px;
   width: 100%;
-  height: 100%;
-  background-image: radial-gradient(circle, transparent, rgba(0, 0, 0, 0.8)),
-    url(./img/bg.jpg);
-  background-repeat: no-repeat;
+  height: 100vh;
+  background-image: url(./img/pexels-nathan-engel-50858-436413.jpg);
   background-position: center;
   background-size: cover;
-  position: relative;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
-hedder {
+header {
   width: 100%;
-  height: 100%;
-}
-
-/* login */
-#login {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  input[type="submit"] {
-    font-size: 18px;
-    padding: 8px 45px;
-    border: 1px solid transparent;
-    border-radius: 10px;
-    background-color: white;
-    &:hover {
-      cursor: pointer;
-      border: 1px solid white;
-      background-color: black;
-      color: white;
-      transition: all 0.3s;
+  height: 200px;
+  /* header_logo */
+  .header_logo {
+    background-image: url(./img/tving.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 160px;
+    height: 40px;
+  }
+  /* login */
+  #login {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    input[type="submit"] {
+      font-size: 18px;
+      padding: 8px 45px;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      background-color: white;
+      &:hover {
+        cursor: pointer;
+        border: 1px solid white;
+        background-color: black;
+        color: white;
+        transition: all 0.3s;
+      }
     }
   }
 }
-
 /* logo */
-#logo {
-  cursor: pointer;
-  width: 300px;
-  height: 54px;
-  background-image: url(./img/bi_1.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  margin: 70px auto 34px;
-  /* position: absolute;
-  top: 70px;
-  left: 50%;
-  transform: translateX(-50%); */
-}
 
 /* logon */
 #logon {
   width: 464px;
-  height: 650px;
-  background-image: radial-gradient(
-      rgba(35, 36, 39, 0.7),
-      rgba(35, 36, 39, 0.9)
-    ),
-    url(./img/middle.png);
+  height: 700px;
+  background-color: black;
+  background-image: url(./img/);
   background-repeat: no-repeat;
   background-position: center;
   background-size: center;
   margin: 0 auto 50px;
-  border-radius: 10px;
+  border-radius: 3px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -97,41 +86,46 @@ hedder {
 }
 
 .title {
+  color: #777;
   width: 424px;
   text-align: center;
   margin-bottom: 30px;
-  font-weight: 800;
-  font-size: 22px;
+  font-weight: normal;
+  font-size: 14px;
+  h1 {
+    color: #fff;
+    font-size: 36px;
+    font-weight: 800;
+  }
 }
 
 .calendar {
   display: flex;
   justify-content: space-around;
   margin: 10px 0 30px;
-
   select {
     width: 141px;
-    height: 40px;
+    height: 60px;
     font-size: 16px;
     background-color: #000;
     color: #bdbebe;
     padding-left: 30px;
 
     &:first-child {
-      border-radius: 8px 0 0 8px;
+      border-radius: 3px 0 0 3px;
     }
     &:last-child {
-      border-radius: 0 8px 8px 0;
+      border-radius: 0 3px 3px 0;
     }
   }
 }
 
 .username #user {
   width: 100%;
-  height: 40px;
+  height: 60px;
   margin: 10px 0 30px;
   border: 1px solid #707070;
-  border-radius: 8px;
+  border-radius: 3px;
   padding-left: 10px;
   font-size: 16px;
   background-color: black;
@@ -143,10 +137,10 @@ hedder {
 
 .userpassword #password {
   width: 100%;
-  height: 40px;
+  height: 60px;
   margin: 10px 0 30px;
   border: 1px solid #707070;
-  border-radius: 8px;
+  border-radius: 3px;
   padding-left: 10px;
   font-size: 16px;
   background-color: black;
@@ -157,7 +151,7 @@ hedder {
 }
 
 #gender_btn {
-  margin: 10px 0 30px;
+  margin: 10px 0 10px;
   display: flex;
   button {
     cursor: pointer;
@@ -168,11 +162,11 @@ hedder {
     border: 1px solid #707070;
 
     &:first-child {
-      border-radius: 8px 0 0 8px;
+      border-radius: 3px 0 0 3px;
       border-right: transparent;
     }
     &:last-child {
-      border-radius: 0 8px 8px 0;
+      border-radius: 0 3px 3px 0;
     }
 
     i {
@@ -198,7 +192,7 @@ hedder {
 }
 
 .check {
-  margin: 25px 0;
+  margin: 10px 0;
   input[type="checkbox"] {
     cursor: pointer;
     scale: 2;
@@ -211,7 +205,7 @@ hedder {
   width: 100%;
   height: 40px;
   border: 1px solid transparent;
-  border-radius: 8px;
+  border-radius: 3px;
   background-color: #919293;
   color: #fff;
   font-size: 16px;
@@ -229,11 +223,11 @@ footer {
   align-items: center;
   justify-content: center;
   h3 {
+    margin: 10px;
     color: #fff;
   }
   #items {
     display: flex;
-    margin-top: 30px;
     gap: 10px;
     .inner_item {
       background-color: #000;
@@ -244,7 +238,7 @@ footer {
       align-items: center;
       gap: 10px;
       border: 1px solid #fff;
-      border-radius: 8px;
+      border-radius: 3px;
       padding: 10px;
       i {
         font-size: 38px;
