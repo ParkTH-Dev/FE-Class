@@ -38,3 +38,23 @@ document.querySelectorAll("a").forEach((anchor) => {
     });
   });
 });
+
+// img slide
+document.querySelector(".btn1").addEventListener("click", () => {
+  document.querySelector(".slides").style.transform = "translate(0)";
+});
+document.querySelector(".btn2").addEventListener("click", () => {
+  document.querySelector(".slides").style.transform = "translate(-260px)";
+});
+document.querySelector(".btn3").addEventListener("click", () => {
+  document.querySelector(".slides").style.transform = "translate(-520px)";
+});
+document.querySelector(".btn4").addEventListener("click", () => {
+  document.querySelector(".slides").style.transform = "translate(-780px)";
+});
+document.querySelector(".btn5").addEventListener("click", () => {
+  document.querySelector(".slides").style.transform = "translate(-1040px)";
+});
+document.querySelector(".btn6").addEventListener("click", () => {
+  document.querySelector(".slides").style.transform = "translate(-1300px)";
+});
