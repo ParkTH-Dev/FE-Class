@@ -40,23 +40,42 @@ document.querySelectorAll("a").forEach((anchor) => {
 });
 
 // img slide
-document.querySelector(".btn1").addEventListener("click", () => {
-  document.querySelector(".slides").style.transform = "translate(0)";
+// document.querySelector(".btn1").addEventListener("click", () => {
+//   document.querySelector(".slides").style.transform = "translate(0)";
+// });
+// document.querySelector(".btn2").addEventListener("click", () => {
+//   document.querySelector(".slides").style.transform = "translate(-260px)";
+// });
+// document.querySelector(".btn3").addEventListener("click", () => {
+//   document.querySelector(".slides").style.transform = "translate(-520px)";
+// });
+// document.querySelector(".btn4").addEventListener("click", () => {
+//   document.querySelector(".slides").style.transform = "translate(-780px)";
+// });
+// document.querySelector(".btn5").addEventListener("click", () => {
+//   document.querySelector(".slides").style.transform = "translate(-1040px)";
+// });
+// document.querySelector(".btn6").addEventListener("click", () => {
+//   document.querySelector(".slides").style.transform = "translate(-1300px)";
+// });
+
+const slides = document.querySelector(".slides");
+const slideArray = document.querySelectorAll(".slides > li");
+const totalSlides = slideArray.length;
+let currentIndex = 0;
+document.querySelector(".next_btn").addEventListener("click", () => {
+  currentIndex++;
+  if (currentIndex >= totalSlides) {
+    currentIndex = 0;
+  }
+  slides.style.transform = `translateX(${-currentIndex * 260}px)`;
 });
-document.querySelector(".btn2").addEventListener("click", () => {
-  document.querySelector(".slides").style.transform = "translate(-260px)";
-});
-document.querySelector(".btn3").addEventListener("click", () => {
-  document.querySelector(".slides").style.transform = "translate(-520px)";
-});
-document.querySelector(".btn4").addEventListener("click", () => {
-  document.querySelector(".slides").style.transform = "translate(-780px)";
-});
-document.querySelector(".btn5").addEventListener("click", () => {
-  document.querySelector(".slides").style.transform = "translate(-1040px)";
-});
-document.querySelector(".btn6").addEventListener("click", () => {
-  document.querySelector(".slides").style.transform = "translate(-1300px)";
+document.querySelector(".prev_btn").addEventListener("click", () => {
+  currentIndex--;
+  if (currentIndex < 0) {
+    currentIndex = totalSlides - 1;
+  }
+  slides.style.transform = `translateX(${-currentIndex * 260}px)`;
 });
 
 // dark mode
@@ -64,18 +83,6 @@ const toggle = document.querySelector(".toggle");
 toggle.addEventListener("click", () => {
   document.querySelector("#wrapper").classList.toggle("dark");
 });
-
-// typed text
-// const text = "안녕하세요! 프론트엔드 개발자를 꿈꾸는 박태환입니다!";
-// let index = 0;
-// let speed = 150;
-// function typeWriter() {
-//   if (index < text.length) {
-//     document.querySelector(".title > #text").textContent += text.charAt(index);
-//     index++;
-//     setTimeout(typeWriter, speed);
-//   }
-// }
 
 // typeWriter();
 const text = "안녕하세요!\n프론트엔드 개발자를 꿈꾸는\n박태환입니다!";
