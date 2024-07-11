@@ -58,3 +58,47 @@ document.querySelector(".btn5").addEventListener("click", () => {
 document.querySelector(".btn6").addEventListener("click", () => {
   document.querySelector(".slides").style.transform = "translate(-1300px)";
 });
+
+// dark mode
+const toggle = document.querySelector(".toggle");
+toggle.addEventListener("click", () => {
+  document.querySelector("#wrapper").classList.toggle("dark");
+});
+
+// typed text
+// const text = "안녕하세요! 프론트엔드 개발자를 꿈꾸는 박태환입니다!";
+// let index = 0;
+// let speed = 150;
+// function typeWriter() {
+//   if (index < text.length) {
+//     document.querySelector(".title > #text").textContent += text.charAt(index);
+//     index++;
+//     setTimeout(typeWriter, speed);
+//   }
+// }
+
+// typeWriter();
+const text = "안녕하세요!\n프론트엔드 개발자를 꿈꾸는\n박태환입니다!";
+let index = 0;
+let speed = 150;
+let delay = 2000; // 텍스트가 끝까지 출력된 후 대기 시간 (밀리초)
+
+function typeWriter() {
+  if (index < text.length) {
+    let char = text.charAt(index);
+    if (char === "\n") {
+      char = "<br>";
+    }
+    document.querySelector(".title > #text").innerHTML += char;
+    index++;
+    setTimeout(typeWriter, speed);
+  } else {
+    setTimeout(() => {
+      document.querySelector(".title > #text").innerHTML = "";
+      index = 0;
+      typeWriter();
+    }, delay);
+  }
+}
+
+typeWriter();
