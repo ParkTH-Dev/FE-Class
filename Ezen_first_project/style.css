@@ -711,6 +711,9 @@ footer {
         }
       }
     }
+    .modal {
+      width: 100%;
+    }
     .modal .modal_box {
       width: 360px;
     }
