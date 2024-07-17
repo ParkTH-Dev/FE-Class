@@ -1,0 +1,63 @@
+// variables
+$complate-btn: royalblue;
+$loading-btn: green;
+$error-btn: crimson;
+$notice-btn-hover: #000;
+$notice-btn-fs: 18px;
+// reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+// mixin
+@mixin notice-button {
+  width: 150px;
+  padding: 7px;
+  border-radius: 5px;
+  font-size: $notice-btn-fs;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: #fff;
+  &.complete:hover {
+    background-color: $complate-btn;
+    color: #fff;
+    border: 3px solid transparent;
+  }
+  &.loading:hover {
+    background-color: $loading-btn;
+    color: #fff;
+    border: 3px solid transparent;
+  }
+  &.error:hover {
+    background-color: $error-btn;
+    color: #fff;
+    border: 3px solid transparent;
+  }
+}
+// content
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  .btns {
+    button {
+      &.complete {
+        @include notice-button();
+        color: $complate-btn;
+        border: 3px solid $complate-btn;
+      }
+      &.loading {
+        @include notice-button();
+        color: $loading-btn;
+        border: 3px solid $loading-btn;
+      }
+      &.error {
+        @include notice-button();
+        color: $error-btn;
+        border: 3px solid $error-btn;
+      }
+    }
+  }
+}

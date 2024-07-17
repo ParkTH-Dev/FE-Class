@@ -137,7 +137,6 @@ header {
 /* ranking */
 .ranking {
   background: #f8f8f8;
-
   .ranking_content {
     padding: 100px 0;
     h2 {
@@ -220,11 +219,18 @@ header {
       background: dodgerblue;
     }
     .myslider {
+      > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
       .client {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 15px;
+        gap: 5px;
+        margin-right: 100px;
         img {
           width: 85px;
           border-radius: 50%;
@@ -237,9 +243,9 @@ header {
         }
       }
       .comment {
+        width: 74%;
         font-size: 16px;
         line-height: 1.6rem;
-        padding: 15px;
       }
     }
   }
@@ -332,6 +338,7 @@ button.slick-arrow {
     display: flex;
     gap: 20px;
     .recent_post_items {
+      flex: 4;
       h6 {
         font-size: 16px;
         text-transform: uppercase;
@@ -342,10 +349,11 @@ button.slick-arrow {
         display: flex;
         gap: 20px;
         .post_image {
-          width: 360px;
+          width: 450px;
           height: 100%;
           border-radius: 30px 0 30px 0;
           overflow: hidden;
+          flex: 1;
           img {
             width: 100%;
             height: 100%;
@@ -353,12 +361,12 @@ button.slick-arrow {
           }
         }
         .post_desc {
+          flex: 1;
           h3 {
             text-transform: uppercase;
             font-size: 24px;
           }
           p {
-            width: 360px;
             font-size: 14px;
             line-height: 1.6rem;
             span {
@@ -372,6 +380,7 @@ button.slick-arrow {
       }
     }
     .shared_post_items {
+      flex: 1;
       h6 {
         font-size: 16px;
         text-transform: uppercase;
@@ -488,6 +497,167 @@ footer {
           }
         }
       }
+    }
+  }
+}
+
+/* gototop */
+.gototop {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, skyblue, #c1e4f2);
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+  font-size: 26px;
+  position: fixed;
+  bottom: -20px;
+  right: 20px;
+  opacity: 0;
+  transition: all 0.3s;
+  &.active {
+    opacity: 1;
+    bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .inner {
+    width: 100%;
+    padding: 15px;
+  }
+  /* header */
+  header {
+    .banner {
+      display: none;
+    }
+    nav {
+      width: 100%;
+      padding: 0 20px;
+      .gnb {
+        height: 100vh;
+        width: 250px;
+        background: #fff;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -250px;
+        text-align: right;
+        padding: 80px 10px 0 0;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0, 0.2);
+        transition: all 0.3s;
+        li {
+          a {
+            color: #111;
+            font-size: 18px;
+            display: block;
+            padding: 10px;
+          }
+        }
+        &.active {
+          right: 0;
+        }
+      }
+    }
+    .trigger {
+      display: block;
+      width: 30px;
+      height: 16px;
+
+      position: absolute;
+      top: 30px;
+      right: 20px;
+      span {
+        width: 100%;
+        height: 2px;
+        background: #111;
+        position: absolute;
+        transition: all 0.3s;
+        &:nth-child(1) {
+          top: 0;
+        }
+        &:nth-child(2) {
+          top: 50%;
+        }
+        &:nth-child(3) {
+          top: 100%;
+        }
+      }
+      &.active span:nth-child(1) {
+        top: 50%;
+        transform: rotate(45deg);
+      }
+      &.active span:nth-child(2) {
+        opacity: 0;
+      }
+      &.active span:nth-child(3) {
+        top: 50%;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+  /* intro */
+  .intro {
+    .heading {
+      h1 {
+        font-size: 40px;
+      }
+      p {
+        padding: 0;
+      }
+    }
+  }
+  /* about */
+  .about_content {
+    flex-direction: column;
+  }
+  /* ranking */
+  .ranking {
+    .ranking_content {
+      padding: 50px 0;
+      .items {
+        flex-direction: column;
+        .item {
+          width: 100%;
+          border-radius: 7px;
+          margin-bottom: 25px;
+          .up-image {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  /* Testimonial */
+  .testimonial {
+  }
+  .blog {
+    .post_content {
+      flex-direction: column;
+    }
+  }
+  .festival {
+    padding: 15px;
+    .festival_heading {
+      h3 {
+        font-size: 24px;
+      }
+
+      .btns {
+        a {
+          width: 100%;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+  /* footer */
+  footer {
+    .footer_content {
+      flex-direction: column;
+      gap: 25px;
     }
   }
 }
