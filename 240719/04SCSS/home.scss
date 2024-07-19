@@ -1,0 +1,79 @@
+@import "./reset.css";
+
+// built-in-function
+$color: (
+  accent-color: #dc143c,
+  bg-dark-color: #000,
+  bg-light-color: #fff,
+  bg-gray-color: #808080,
+  theme-color: #55b2e4,
+);
+$size: 14px;
+
+// common
+html,
+body {
+  height: 100%;
+}
+
+// home
+.wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .wrapper_header {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .contents_title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      .title {
+        font: bold $size/1 "arial";
+        color: map-get($color, theme-color);
+      }
+      .subtitle {
+        font: normal $size/1 "arial";
+      }
+    }
+    .divideLine {
+      width: 100%;
+      border-top: 1px solid map-get($color, bg-gray-color);
+      margin: 4px 0;
+    }
+  }
+  .wrapper_body {
+    width: 100%;
+    height: 270px;
+    .contents_title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      .title {
+        font: bold $size/1 "arial";
+        color: map-get($color, theme-color);
+      }
+      .subtitle {
+        font: normal $size/1 "arial";
+      }
+    }
+    .divideLine {
+      width: 100%;
+      border-top: 1px solid map-get($color, bg-gray-color);
+      margin: 4px 0;
+    }
+    .video {
+      width: 100%;
+      height: 240px;
+      background: url(./contents/iu_1.jpg) center/cover no-repeat;
+      margin-top: 10px;
+    }
+  }
+}
