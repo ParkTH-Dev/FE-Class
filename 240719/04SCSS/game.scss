@@ -1,0 +1,162 @@
+@import "./reset.css";
+
+// built-in-function
+$color: (
+  accent-color: #ffe400,
+  bg-dark-color: #000,
+  bg-light-color: #fff,
+  bg-gray-color: #808080,
+  theme-color: #55b2e4,
+);
+$size: 14px;
+
+// mixin
+@mixin buttonType {
+  border: none;
+  padding: 2px 8px;
+  border-radius: 8px;
+  background: #f6f6f6;
+  transition: all 0.3s;
+  &:hover {
+    background: map-get($color, accent-color);
+  }
+}
+
+// common
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .wrapper_header {
+    width: 100%;
+    height: 30px;
+    .contents_title {
+      align-items: center;
+      display: flex;
+      gap: 10px;
+      .titel {
+        color: map-get($color, theme-color);
+        font: bold 16px/1 "arial";
+      }
+      .subtitle {
+        font-size: $size;
+      }
+    }
+    .divideLine {
+      width: 100%;
+      border-top: 1px solid map-get($color, bg-gray-color);
+      margin: 4px 0;
+    }
+  }
+  & > div:nth-child(2) {
+    width: 100%;
+    height: 158px;
+    background: url(./contents/bg_1.jpg) center -90px / cover no-repeat;
+    position: relative;
+    &::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      position: absolute;
+      background: rgb(0, 0, 0, 0.5);
+    }
+  }
+  & > div:nth-child(3) {
+    width: 100%;
+    height: 158px;
+    background: url(./contents/bg_2.jpg) center -110px / cover no-repeat;
+    position: relative;
+    &::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      position: absolute;
+      background: rgb(0, 0, 0, 0.5);
+    }
+  }
+  .game_container {
+    width: 100%;
+    height: 158px;
+    border: 1px solid map-get($color, bg-gray-color);
+    border-radius: 15px;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 8px map-get($color, bg-gray-color);
+    overflow: hidden;
+    position: relative;
+    img {
+      position: relative;
+    }
+    .game_title {
+      position: relative;
+      color: map-get($color, bg-light-color);
+      font: 700 16px/1 "arial";
+    }
+    .game_subtitle {
+      position: relative;
+      color: map-get($color, bg-light-color);
+      font: normal $size/1 "arial";
+    }
+    .word_text {
+      position: relative;
+      input[type="text"] {
+        border: none;
+        background: transparent;
+        border-bottom: 1px solid #ddd;
+        color: map-get($color, bg-light-color);
+        padding: 0 0 2px 8px;
+        &::placeholder {
+          transition: opacity 0.3s;
+          opacity: 1;
+          color: map-get($color, bg-light-color);
+        }
+        &:focus {
+          outline: none;
+          &::placeholder {
+            opacity: 0;
+          }
+        }
+      }
+      input[type="submit"] {
+        @include buttonType;
+      }
+    }
+    .word_result {
+      position: relative;
+      color: map-get($color, accent-color);
+      font-weight: 600;
+    }
+    .game_lotto_num {
+      margin: 5px 0;
+      position: relative;
+      background: map-get($color, accent-color);
+      padding: 4px 14px;
+      border-radius: 8px;
+      font-size: $size;
+      span {
+        color: map-get($color, bg-light-color);
+        text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+      }
+    }
+    .wrapper_lotto_btn {
+      position: relative;
+      @include buttonType();
+    }
+  }
+}
