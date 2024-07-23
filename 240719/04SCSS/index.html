@@ -10,7 +10,7 @@
     ></script>
     <!-- costom -->
     <link rel="stylesheet" href="./style.css" />
-    <script src="./script.js"></script>
+    <script defer src="./script.js"></script>
     <title>싸이월드</title>
   </head>
   <body>
@@ -76,15 +76,15 @@
               </div>
             </div>
             <div class="wrapper_right_body">
-              <!-- <iframe id="contentframe" src="./home.html"></iframe> -->
+              <iframe id="contentframe" src="./home.html"></iframe>
               <!-- <iframe id="contentframe" src="./game.html"></iframe> -->
-              <iframe id="contentframe" src="./jukebox.html"></iframe>
+              <!-- <iframe id="contentframe" src="./jukebox.html"></iframe> -->
             </div>
           </section>
           <section class="navigation">
-            <div class="navigation_item">홈</div>
-            <div class="navigation_item">게임</div>
-            <div class="navigation_item">쥬크박스</div>
+            <div id="menuHome" class="navigation_item">홈</div>
+            <div id="menuGame" class="navigation_item">게임</div>
+            <div id="menuJukebox" class="navigation_item">쥬크박스</div>
           </section>
         </main>
       </div>
