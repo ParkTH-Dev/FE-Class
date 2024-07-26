@@ -90,6 +90,145 @@ body {
   }
 }
 
+// project
+.project-inner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: $main-light-bg;
+  border: 1px solid $main-item-border;
+  input[name="tabmenu"] {
+    display: none;
+  }
+  input[id="tab1"]:checked ~ .tabs {
+    margin-left: 0;
+  }
+  input[id="tab2"]:checked ~ .tabs {
+    margin-left: -100%;
+  }
+
+  input[id="tab3"]:checked ~ .tabs {
+    margin-left: -200%;
+  }
+
+  .tabs {
+    width: 300%;
+    height: 100%;
+    transition: all 0.5s;
+    display: flex;
+    .tab {
+      width: 33.3333%;
+      height: 100%;
+      display: flex;
+      & > div {
+        height: 100%;
+        &.project-info {
+          width: 25%;
+          padding: 50px;
+          position: relative;
+          &::before {
+            content: attr(data-text);
+            font-size: 130px;
+            color: #eee;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+          }
+          h3 {
+            position: relative;
+            font-size: 20px;
+          }
+          p {
+            position: relative;
+            font: normal 16px/2.4rem map-get($family, Montserrat);
+            margin: 20px 0;
+          }
+          ul {
+            line-height: 4rem;
+            li::before {
+              content: "\f105";
+              font-family: fontawesome;
+              margin-right: 10px;
+            }
+          }
+          .detail {
+            margin: 20px 0 50px;
+            display: flex;
+            justify-content: center;
+            color: #999;
+            div {
+              flex: 1;
+              text-align: center;
+              span {
+                display: block;
+                font-size: 36px;
+                font-weight: bold;
+                color: $main-font-color;
+                margin-bottom: 10px;
+              }
+            }
+          }
+          .view-project {
+            display: inline-block;
+            text-align: center;
+            background: $main-font-color;
+            color: $main-light-bg;
+            padding: 10px;
+            width: 220px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            &:hover {
+              background: $main-item-border;
+              color: $main-font-color;
+            }
+          }
+        }
+        &.project-photo {
+          width: 75%;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+  .btn {
+    position: absolute;
+    bottom: 30px;
+    width: 25%;
+    text-align: center;
+    label {
+      width: 5px;
+      height: 5px;
+      background: $main-font-color;
+      display: inline-block;
+      border-radius: 50%;
+      margin: 8px;
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        top: 0;
+        left: 0;
+        width: 17px;
+        height: 17px;
+        border: 1px solid transparent;
+        border-radius: 50%;
+        left: -6px;
+        top: -6px;
+        transition: all 0.3s;
+      }
+      &:hover::before {
+        border: 1px solid $main-item-border;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
 // plan
 .plan-inner {
   height: 100%;
@@ -370,6 +509,49 @@ body {
       p {
         margin-top: 20px;
         line-height: 2.4rem;
+      }
+    }
+  }
+}
+
+// modal
+.modal {
+  font-family: map-get($family, sourcecode);
+  header {
+    position: fixed;
+    width: 100%;
+    background: $main-light-bg;
+    z-index: 100;
+    .header-inner {
+      height: 90px;
+      width: 95%;
+      line-height: 90px;
+      margin: 0 auto;
+      border-bottom: 1px solid $main-item-border;
+      .modal-display {
+        font-size: 18px;
+      }
+    }
+  }
+  .hiring-main {
+    height: 600px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    &.project-main1 {
+      background: url(./images/project-main-01-01.jpg) center/cover no-repeat;
+      height: 100vh;
+    }
+    .hiring-heading {
+      color: $main-light-bg;
+      span {
+        font-size: 20px;
+      }
+      h1 {
+        font-size: 60px;
+        font-weight: 200;
       }
     }
   }
