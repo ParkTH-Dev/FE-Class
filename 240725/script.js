@@ -46,7 +46,8 @@
 // ul.appendChild(li);
 
 // json 방식
-const productInfo = "./products.json";
+const productInfo =
+  "https://my-json-server.typicode.com/ParkTH-Dev/fake-server/db";
 fetch(productInfo)
   .then((response) => response.json())
   .then((data) => {
@@ -109,7 +110,15 @@ fetch(productInfo)
       // li.appendChild(div);
       // ul태그 자식요소에 li 넣기 appendChild
       ul.appendChild(li);
+
+      li.addEventListener("click", () => {
+        const url = `product-detail.html?category=${
+          product.category
+        }&name=${encodeURIComponent(product.name)}`;
+        window.location.href = url;
+      });
     };
+
     // importing items (모든 데이터를 출력 )
     const importData = () => {
       products.data.map((product) => {
@@ -117,6 +126,7 @@ fetch(productInfo)
       });
     };
     importData();
+
     // newList
     const newListing = document.querySelector(".newlisting");
 
