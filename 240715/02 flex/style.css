@@ -80,7 +80,7 @@ header {
 /* intro */
 .intro {
   height: 100vh;
-  background: url(./img/intro.jpg) center/cover no-repeat;
+  background: url(./image/1.jpg) center/cover no-repeat;
   display: flex;
   align-items: center;
   .heading {
@@ -128,7 +128,7 @@ header {
       flex: 2;
       img {
         width: 100%;
-        border-radius: 40% 60% 65% 35% / 40% 45% 55% 60%;
+        border-radius: 20px;
       }
     }
   }
