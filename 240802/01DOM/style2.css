@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.7s;
+}
+body.dark {
+  background-color: #222;
+  color: #eee;
+}
+body main #toggleBox {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+body main #toggleBox button {
+  padding: 5px 10px;
+  border: 1px solid #222;
+  border-radius: 5px;
+}
+body main #contents {
+  width: 600px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
