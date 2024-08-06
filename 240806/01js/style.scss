@@ -1,0 +1,27 @@
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+  border: 2px solid #000;
+  padding: 15px;
+  font-size: 20px;
+  height: 230px;
+  text-align: center;
+  .out {
+    background-color: #d6edfc;
+    width: 230px;
+    height: 230px;
+    .in {
+      width: 60%;
+      height: 50%;
+      background-color: #fcd;
+      margin: 10px;
+    }
+  }
+}

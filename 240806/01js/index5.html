@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="./script5.js"></script>
+    <title>Document</title>
+    <style>
+      li,
+      ul {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
+        & > button.active {
+          display: none;
+        }
+        .wrapper {
+          display: none;
+          &.active {
+            display: block;
+          }
+          .profile {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px 40px;
+            position: relative;
+            & > button {
+              position: absolute;
+              top: 20px;
+              right: 20px;
+            }
+            img {
+              width: 300px;
+              border-radius: 8px;
+            }
+            #desc > ul {
+              display: flex;
+              flex-direction: column;
+              gap: 50px;
+            }
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button id="open">프로필보기</button>
+    <div class="wrapper">
+      <div class="profile">
+        <button>닫기</button>
+        <img
+          src="https://i.namu.wiki/i/pWjwjQ8g8PHy37F-IQvM0qmUH6-NhCH0mLeMGrBArerxV_eATwJT_7rgdHcUhWZrRWG-TF7nMY7BiD0YSu5Tbg.webp"
+          alt=""
+        />
+        <div id="desc">
+          <ul>
+            <li><a href="#none">이름: 하니</a></li>
+            <li><a href="#none">직업: 가수</a></li>
+            <li><a href="#none">취미: 노래</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
