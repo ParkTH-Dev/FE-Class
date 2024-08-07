@@ -1,0 +1,21 @@
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ul {
+    display: flex;
+    gap: 5px;
+    list-style: none;
+    background-color: #555;
+    padding: 5px 10px;
+    border-radius: 5px;
+    .fa-star.active {
+      color: yellow;
+    }
+    span {
+      color: #fff;
+    }
+  }
+}

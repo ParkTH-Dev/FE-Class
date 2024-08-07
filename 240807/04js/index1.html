@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="./script1.js"></script>
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      margin-top: 100px;
+      .container {
+        width: 1200px;
+        .heading {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          justify-content: center;
+          .desc {
+            width: 70%;
+            p {
+              margin: 20px 0;
+            }
+          }
+        }
+      }
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="heading">
+        <div class="img">
+          <img
+            style="width: 280px"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAkEe6a8akUN3LMdk_5Zq9AVozagVfH768ng&s"
+            alt=""
+          />
+        </div>
+        <div class="desc">
+          <h1>상품설명</h1>
+          <h2>상품명: 나이키 G.T. 허슬 3EP 일렉트릭</h2>
+          <p>
+            이중 스택 줌에어 유닛이 막강한 파워를 제공하고 통기성 좋은 갑피가
+            안정성과 시원함을 유지해줍니다.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates
+            dolorum quo fugit magnam eligendi, soluta labore tempore neque, hic
+            quae minima optio perspiciatis quibusdam similique possimus, unde
+            dolores velit! Quidem! Ut, unde vitae! Magni possimus laborum id
+            sunt quae assumenda eius? Molestiae placeat est laudantium dolores
+            vitae pariatur? Minus dolorem ad accusamus assumenda ea, vero
+            aspernatur pariatur optio tenetur illo.
+          </p>
+          <button id="order">상품 주문하기</button>
+        </div>
+      </div>
+      <div class="orderInfo"></div>
+    </div>
+  </body>
+</html>
