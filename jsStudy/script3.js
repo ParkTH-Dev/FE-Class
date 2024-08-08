@@ -1,11 +1,7 @@
-const words = ["apple", "banana", "cherry", "avocado", "grape"];
-const startLetter = "a";
+const strings = [5, 12, 8, 21, 15, 3];
 
-let matching = [];
-
-for (let i = 0; i < words.length; i++) {
-  if (words[i].startsWith(startLetter)) {
-    matching.push(words[i]);
+strings.forEach((i) => {
+  if (i > 10) {
+    console.log(i);
   }
-}
-console.log(`${matching}로 시작하는 단어는`);
+});
