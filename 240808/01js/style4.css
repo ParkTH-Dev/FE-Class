@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+
+  form {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    & > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      font-size: 16px;
+      input[type="text"] {
+        width: 300px;
+        padding: 10px 20px;
+      }
+    }
+    input[type="submit"] {
+      padding: 10px 0;
+    }
+  }
+  table {
+    thead > tr > td {
+      font-weight: bold;
+    }
+    tr {
+      display: flex;
+      td {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 250px;
+        padding: 10px 0;
+        border: 1px solid #ddd;
+      }
+    }
+  }
+}
