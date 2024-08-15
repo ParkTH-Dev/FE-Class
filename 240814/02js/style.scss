@@ -1,0 +1,234 @@
+// reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+// variable
+$main-dark-color: #000;
+$main-light-color: #fff;
+$main-active-color: #353b48;
+$main-boutton-color: #dc143c;
+$main-hashtag-color: #ff0;
+
+// common
+html {
+  font-size: 14px;
+  background: $main-dark-color;
+}
+
+// contents
+body {
+  width: 100%;
+}
+
+// header
+header {
+  width: 100%;
+  height: 80px;
+  background: $main-dark-color;
+  display: flex;
+  justify-content: center;
+  nav {
+    width: 900px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo {
+      img {
+        width: auto;
+        height: 30px;
+      }
+    }
+    .search-box {
+      i {
+        cursor: pointer;
+        color: $main-light-color;
+        font-size: 1.4rem;
+      }
+    }
+  }
+}
+
+// movie
+.movie {
+  width: 100%;
+  height: calc(100vh - 80px);
+  background: url("https://image-cdn.hypb.st/https%3A%2F%2Fkr.hypebeast.com%2Ffiles%2F2020%2F10%2Freasons-results-netflix-korean-dramas-original-sponsored-contents-kingdom-extracurricular-new-01.jpg?w=1260&cbr=1&q=90&fit=max")
+    top/cover no-repeat;
+}
+
+.faq {
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  color: $main-light-color;
+  .faq-inner {
+    width: 700px;
+    margin: 0 auto;
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+    }
+    .accordion {
+      font-size: 1.2rem;
+      margin: 10px 0;
+      .title {
+        width: 100%;
+        font-weight: bold;
+        margin-bottom: 8px;
+        padding: 10px;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.3s;
+        &::after {
+          content: "\2b";
+          font-family: "fontawesome";
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transition: all 0.3s;
+          transform: translateY(-50%);
+        }
+        &.active {
+          background: $main-active-color;
+          &::after {
+            content: "\2b";
+            font-family: "fontawesome";
+            transform: translateY(-50%) rotate(45deg);
+          }
+        }
+      }
+      .content {
+        padding: 10px;
+        margin-bottom: 16px;
+        font-size: 1rem;
+        display: none;
+      }
+    }
+    .newsletter {
+      width: 100%;
+      text-align: center;
+      p {
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      form {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        input[type="text"] {
+          border: none;
+          height: 60px;
+          font-size: 1.4rem;
+          padding-left: 10px;
+          flex: 3;
+          input {
+          }
+          &:focus {
+            outline: none;
+          }
+        }
+        input[type="submit"] {
+          flex: 1;
+          color: $main-light-color;
+          background: $main-boutton-color;
+          height: 60px;
+          border: none;
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+}
+
+// modal
+.modal-search {
+  background: rgba($color: #000000, $alpha: 0.8);
+  width: 100%;
+  height: 300px;
+  position: fixed;
+  top: -300px;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $main-light-color;
+  transition: all 0.3s;
+  &.active {
+    top: 0;
+  }
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    i {
+      font-size: 2rem;
+      cursor: pointer;
+    }
+  }
+  .search {
+    width: 500px;
+    position: relative;
+    form {
+      margin-bottom: 10px;
+      display: flex;
+      input[type="text"] {
+        flex: 5;
+        padding: 15px;
+        padding-left: 30px;
+        border: none;
+        &:focus {
+          outline: none;
+          &::placeholder {
+            opacity: 0;
+          }
+        }
+        &::placeholder {
+          font-style: italic;
+          opacity: 1;
+          transition: all 0.3s;
+        }
+      }
+      input[type="submit"] {
+        cursor: pointer;
+        flex: 1;
+        padding: 15px;
+        border: none;
+        color: #fff;
+        background: $main-boutton-color;
+        opacity: 0.9;
+        transition: all 0.3s;
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+    &::before {
+      color: #666;
+      content: "\f002";
+      font-family: "fontawesome";
+      position: absolute;
+      top: 14px;
+      left: 8px;
+      font-size: 1.2rem;
+    }
+    .hash-tag {
+      font-size: 1rem;
+      color: $main-hashtag-color;
+      opacity: 0;
+      transition: all 0.3s;
+    }
+  }
+}

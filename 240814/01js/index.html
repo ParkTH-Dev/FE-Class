@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./script.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <span class="first"></span>
+      <span class="second"></span>
+      <span class="third"></span>
+    </div>
+    <script>
+      const name = prompt("pm의 이름은?");
+      const loading = document.querySelector("div");
+      setTimeout(() => {
+        loading.remove();
+        document.write(name);
+      }, 3000);
+    </script>
+  </body>
+</html>

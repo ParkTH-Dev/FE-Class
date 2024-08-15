@@ -1,0 +1,42 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+div {
+  display: flex;
+  gap: 5px;
+  span {
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    &:nth-child(1) {
+      background: crimson;
+      animation: round 1s infinite ease-in-out;
+    }
+    &:nth-child(2) {
+      background: blueviolet;
+      animation: round 1s 0.2s infinite ease-in-out;
+    }
+    &:nth-child(3) {
+      background: yellowgreen;
+      animation: round 1s 0.4s infinite ease-in-out;
+    }
+  }
+}
+
+@keyframes round {
+  0% {
+    scale: 1;
+    opacity: 1;
+  }
+  50% {
+    scale: 0.5;
+    opacity: 0;
+  }
+  100% {
+    scale: 1;
+    opacity: 1;
+  }
+}
