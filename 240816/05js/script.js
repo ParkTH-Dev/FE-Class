@@ -44,4 +44,4 @@ console.log(season);
 // 3) 직접 배열 선언 및 할당
 
 const pets = ["dog", "cat", "lion"];
-console.log(pets);
+console.log(petsg);
