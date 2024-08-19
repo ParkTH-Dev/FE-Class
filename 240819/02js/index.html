@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="./script.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main class="player">
+      <video>
+        <source src="./schoolrapper.mp4" />
+      </video>
+      <div class="controls">
+        <div class="progress">
+          <div class="bar">
+            <div class="circle"></div>
+          </div>
+        </div>
+        <div class="btns">
+          <div class="menu">
+            <button class="play-pause">▶︎</button>
+            <span class="rete" data-rate="0.5">x 0.5</span>
+            <span class="rete" data-rate="1">x 1.0</span>
+            <span class="rete" data-rate="1.5">x 1.5</span>
+            <span class="rete" data-rate="2">x 2.0</span>
+          </div>
+          <div class="menu">
+            <input
+              type="range"
+              name="volume"
+              id="volume"
+              min="0.0"
+              max="1.0"
+              step="0.01"
+              value="0.5"
+            />
+            <div class="time">
+              <div class="current">00:00:00</div>
+              <div>/</div>
+              <div class="duration">00:00:00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
