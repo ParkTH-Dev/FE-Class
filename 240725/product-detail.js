@@ -4,7 +4,7 @@ const productInfo = "./products.json"; // productInfo 변수에 JSON 파일 경�
 fetch(productInfo)
   .then((response) => response.json()) // 응답(response)을 JSON 형식으로 파싱
   .then((data) => {
-    let idCounter = Date.now(); // 현재 시간을 기준으로 유니크한 ID 생성
+    let idCounter = Date.now(); // 현재 시간을 기준 으로 유니크한 ID 생성
     const products = {
       data: data.data.map((i) => ({
         ...i, // 데이터 객체 i의 모든 속성을 복사
@@ -12,7 +12,7 @@ fetch(productInfo)
       })),
     };
 
-    // URLSearchParams를 사용하여 URL의 쿼리스트링을 파싱
+    // URLSearchParam s를 사용하여 URL의 쿼리스트링을 파싱
     const params = new URLSearchParams(window.location.search);
     const category = params.get("category"); // "category"라는 키의 값을 가져옴
     const name = params.get("name"); // "name"이라는 키의 값을 가져옴

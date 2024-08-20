@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="./script1.js"></script>
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        .box {
+          width: 600px;
+          height: 600px;
+          background: rgba(0, 0, 0, 0.4);
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 100px;
+          color: white;
+          border-radius: 10px;
+          font-size: 20px;
+          input[type="text"] {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-left: 20px;
+          }
+          .result {
+            font-size: 50px;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <img src="./background.jpg" alt="" />
+      <div class="box">
+        <div class="header">
+          <span>userID</span>
+          <input type="text" />
+        </div>
+        <span class="result">유저 검색 결과 없음</span>
+      </div>
+    </div>
+  </body>
+</html>

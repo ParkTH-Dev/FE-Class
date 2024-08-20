@@ -47,8 +47,10 @@ main {
       position: absolute;
       top: 0;
       left: 0;
+
+      cursor: pointer;
       .bar {
-        width: 100%;
+        /* width: 100%; */
         height: 100%;
         background: crimson;
         position: relative;
@@ -122,7 +124,7 @@ main {
   &:hover .controls {
     transform: translateY(0);
   }
-  &:hover .circle {
+  &:hover .controls .progress .bar .circle {
     opacity: 1;
   }
 }
