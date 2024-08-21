@@ -118,6 +118,10 @@ main {
             font-size: 90%;
           }
         }
+        #fullscreenBtn {
+          font-size: 0.8rem;
+          padding-left: 0;
+        }
       }
     }
   }
