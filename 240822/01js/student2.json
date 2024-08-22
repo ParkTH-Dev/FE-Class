@@ -1,0 +1,17 @@
+[
+  {
+    "name": "calson",
+    "major": "영문학과",
+    "grade": 2
+  },
+  {
+    "name": "hikaru",
+    "major": "피아노학과",
+    "grade": 2
+  },
+  {
+    "name": "nepomniach",
+    "major": "컴퓨터학과",
+    "grade": 2
+  }
+]
