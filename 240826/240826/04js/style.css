@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url("https://blog.kakaocdn.net/dn/bvQPUN/btrHdJYjEOw/W3CPqCwWPmtsNtLp7ZvpW0/img.png") center/cover no-repeat;
+}
+body .noti {
+  text-align: center;
+  color: crimson;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid crimson;
+  font: normal 14px/1 "arial";
+  display: none;
+}
+body .container {
+  width: 300px;
+  height: 200px;
+  background: rgba(65, 105, 225, 0.8);
+  color: #fff;
+  padding: 16px;
+  border: 4px solid #fff;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .container .current-wether {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+body .container .current-wether img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+body .container .current-wether .temp {
+  font: bold 20px/1 "arial";
+}
+body .container .current-wether .info {
+  display: flex;
+  gap: 20px;
+}
