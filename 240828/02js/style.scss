@@ -1,0 +1,45 @@
+// reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// variables
+$main-bg-color: #fff;
+$main-toolbar-color: #222;
+$main-button-color: #cecece;
+
+// contents
+body {
+  overflow: hidden;
+  #container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: top;
+    #toolbar {
+      background: $main-toolbar-color;
+      color: $main-bg-color;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 20px 0;
+      & > div * {
+        margin-right: 5px;
+      }
+      label {
+        font-size: 0.8rem;
+      }
+      button {
+        background: $main-button-color;
+        border: none;
+        border-radius: 10px;
+        padding: 6px 10px;
+        font-size: 0.8rem;
+        cursor: pointer;
+      }
+    }
+  }
+}
