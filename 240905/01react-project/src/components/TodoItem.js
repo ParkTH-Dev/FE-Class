@@ -28,21 +28,29 @@ const Wrapper = styled.div`
   }
 `;
 
-const TodoItem = ({ id, isDone, content, createdDate }) => {
+const TodoItem = ({ id, isDone, content, createdDate, onUpdate, onDelete }) => {
+  console.log(`${id} TodoItem 업데이트`);
+  const onChangeCheckBox = () => {
+    onUpdate(id);
+  };
+  const onClickDelete = () => {
+    onDelete(id);
+  };
+
   return (
     <Wrapper>
       <div className="checkBox_col">
-        <input type="checkBox" />
+        <input type="checkBox" onChange={onChangeCheckBox} />
       </div>
       <div className="title_col">{content}</div>
       <div className="date_col">
         {new Date(createdDate).toLocaleDateString()}
       </div>
       <div className="btn_col">
-        <button>삭제</button>
+        <button onClick={onClickDelete}>삭제</button>
       </div>
     </Wrapper>
   );
 };
 
-export default TodoItem;
+export default React.memo(TodoItem);

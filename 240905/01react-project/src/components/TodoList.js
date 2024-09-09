@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
 
@@ -22,7 +22,7 @@ const ListWrapper = styled.div`
   gap: 20px;
 `;
 
-const TodoList = ({ todo }) => {
+const TodoList = ({ todo, onUpdate, onDelete }) => {
   const [search, setSearch] = useState("");
   const onChangeSearch = (e) => {
     setSearch(e.target.value);
@@ -34,9 +34,28 @@ const TodoList = ({ todo }) => {
           it.content.toLowerCase().includes(search.toLowerCase())
         );
   };
+
+  const analyzeTodo = useMemo(() => {
+    const totalCount = todo.length;
+    const doneCount = todo.filter((item) => item.isDone).length;
+    const notDoneCount = totalCount - doneCount;
+    return {
+      totalCount,
+      doneCount,
+      notDoneCount,
+    };
+  }, [todo]);
+
+  const { totalCount, doneCount, notDoneCount } = analyzeTodo;
+
   return (
     <Wrapper>
       <h4>TodoList 🐸</h4>
+      <div>
+        <div>총 개수 : {totalCount}</div>
+        <div>완료된 할 일 : {doneCount}</div>
+        <div>완료하지 못한 일 : {notDoneCount}</div>
+      </div>
       <input
         value={search}
         onChange={onChangeSearch}
@@ -48,7 +67,12 @@ const TodoList = ({ todo }) => {
           <TodoItem key={item.id} {...item} />
         ))} */}
         {getSearchResult().map((item) => (
-          <TodoItem key={item.id} {...item} />
+          <TodoItem
+            key={item.id}
+            {...item}
+            onUpdate={onUpdate}
+            onDelete={onDelete}
+          />
         ))}
       </ListWrapper>
     </Wrapper>
