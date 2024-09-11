@@ -1,5 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import styled from "styled-components";
+import { TodoContext } from "../App";
 
 const Wrapper = styled.div``;
 const EditorWrap = styled.div`
@@ -26,7 +27,8 @@ const EditorWrap = styled.div`
   }
 `;
 
-const TodoEditor = ({ onCreate }) => {
+const TodoEditor = () => {
+  const { onCreate } = useContext(TodoContext);
   const [content, setContent] = useState("");
   const inputRef = useRef();
   const onChangeContent = (e) => {

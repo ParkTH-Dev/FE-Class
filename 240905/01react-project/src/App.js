@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Header from "./components/Header";
 import TodoEditor from "./components/TodoEditor";
 import TodoList from "./components/TodoList";
-import { useReducer, useRef, useCallback } from "react";
+import React, { useReducer, useRef, useCallback } from "react";
 
 const Wrapper = styled.div`
   width: 500px;
@@ -13,6 +13,8 @@ const Wrapper = styled.div`
   flex-direction: column;
   gap: 30px;
 `;
+
+export const TodoContext = React.createContext();
 
 const mockTodo = [
   {
@@ -87,8 +89,10 @@ function App() {
   return (
     <Wrapper>
       <Header />
-      <TodoEditor onCreate={onCreate} />
-      <TodoList todo={todo} onUpdate={onUpdate} onDelete={onDelete} />
+      <TodoContext.Provider value={{ todo, onCreate, onUpdate, onDelete }}>
+        <TodoEditor />
+        <TodoList />
+      </TodoContext.Provider>
     </Wrapper>
   );
 }

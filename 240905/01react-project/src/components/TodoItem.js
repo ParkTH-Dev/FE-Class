@@ -1,5 +1,6 @@
-import React from "react";
 import styled from "styled-components";
+import React, { useContext } from "react";
+import { TodoContext } from "../App";
 
 const Wrapper = styled.div`
   display: flex;
@@ -28,8 +29,8 @@ const Wrapper = styled.div`
   }
 `;
 
-const TodoItem = ({ id, isDone, content, createdDate, onUpdate, onDelete }) => {
-  console.log(`${id} TodoItem 업데이트`);
+const TodoItem = ({ id, isDone, content, createdDate }) => {
+  const { onUpdate, onDelete } = useContext(TodoContext);
   const onChangeCheckBox = () => {
     onUpdate(id);
   };

@@ -1,0 +1,276 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body.nav_active {
+  & #nav_icon div span {
+    &:nth-child(1) {
+      top: 10px;
+      transform: rotate(45deg);
+    }
+    &:nth-child(2) {
+      opacity: 0;
+    }
+    &:nth-child(3) {
+      top: 10px;
+      transform: rotate(-45deg);
+    }
+  }
+  & nav {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+#nav_icon {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  z-index: 3;
+  & > div {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    span {
+      position: absolute;
+      left: 0;
+      background: #fff;
+      width: 100%;
+      height: 2px;
+      transition: all 0.3s ease-in-out;
+      &:nth-child(1) {
+        top: 0;
+      }
+      &:nth-child(2) {
+        top: 10px;
+      }
+      &:nth-child(3) {
+        top: 20px;
+      }
+    }
+  }
+}
+
+.nav {
+  position: fixed;
+  top: 30px;
+  right: 60px;
+  transform: translateX(50px);
+  z-index: 2;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-right: 20px;
+    li a {
+      color: #fff;
+      font-size: 1.3rem;
+    }
+  }
+}
+
+.section {
+  &#sec0 {
+    background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+    svg,
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
+    .svg1 {
+      transform: translate(-50%, -50%);
+      fill: none;
+      stroke: #fff;
+      stroke-width: 2;
+    }
+    .svg2 {
+      transform: translate(-49.5%, -49.5%);
+      width: 657px;
+    }
+  }
+  &#sec1 {
+    background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
+    .inner {
+      flex-direction: column;
+      img {
+        width: 400px;
+      }
+      .gage_wrap {
+        width: 500px;
+        margin-top: 50px;
+        ul {
+          display: flex;
+          li {
+            width: 25%;
+            text-align: center;
+            .gage {
+              width: 15px;
+              height: 150px;
+              background: rgba($color: #fff, $alpha: 0.5);
+              border-radius: 5px;
+              // opacity: 0.3;
+              margin: 0 auto;
+              padding: 5px;
+              margin-bottom: 20px;
+              position: relative;
+              box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.1);
+              .gage_in {
+                box-shadow: 0 0 5px rgba($color: #f99185, $alpha: 0.3);
+                width: 7px;
+                height: 0;
+                background: #f99185;
+                position: absolute;
+                bottom: 5px;
+                left: 50%;
+                transform: translateX(-50%);
+                border-radius: 5px;
+              }
+            }
+            .gage_title {
+              color: #fff;
+              text-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.3);
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+  &#sec2 {
+    background: url("./img/sec2_bg_0.png") center/cover no-repeat;
+    transition: all 0.3s;
+    .inner {
+      h1 {
+        // opacity: 0;
+        transform: translateY(-50px);
+        img {
+          width: 400px;
+        }
+      }
+      .slider_wrap {
+        width: 50vw;
+        max-width: 700px;
+        height: 35vw;
+        max-height: 550px;
+        margin-left: 50px;
+        transform: translateY(-50px);
+        opacity: 1;
+        .sec2_slider {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          box-shadow: 0 0 20px rgba($color: #000000, $alpha: 0.4);
+          overflow: hidden;
+          border-radius: 30px;
+          li {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            opacity: 0;
+            text-indent: -9999px;
+            &.on {
+              opacity: 1;
+            }
+            &:nth-child(1) {
+              background-image: url("./img/sec2_1.png");
+            }
+            &:nth-child(2) {
+              background-image: url("./img/sec2_2.png");
+            }
+            &:nth-child(3) {
+              background-image: url("./img/sec2_3.png");
+            }
+            &:nth-child(4) {
+              background-image: url("./img/sec2_4.png");
+            }
+          }
+        }
+        .btn_wrap {
+          color: #fff;
+          display: flex;
+          width: 100%;
+          justify-content: space-around;
+          align-items: center;
+          margin-top: 30px;
+          .slide_btn {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            text-indent: -9999px;
+            background: url("./img/arr_01.png") center/cover no-repeat;
+            &.right {
+              background: url("./img/arr_02.png") center/cover no-repeat;
+            }
+          }
+          .slide_icons {
+            display: flex;
+            gap: 10px;
+            li {
+              width: 15px;
+              height: 10px;
+              text-indent: -9999px;
+              background: rgba($color: #fff, $alpha: 0.6);
+              border-radius: 5px;
+              cursor: pointer;
+              transition: all 0.3s;
+              &.active {
+                width: 30px;
+                background: #fff;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &#sec3 {
+    background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+  }
+  &#sec4 {
+    background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  }
+  .inner {
+    width: 1200px;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+#fp-nav {
+  ul {
+    box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.1);
+    background: #fac5ce;
+    padding: 20px 10px;
+    border-radius: 20px;
+    li a span {
+      background: #fff;
+    }
+  }
+}

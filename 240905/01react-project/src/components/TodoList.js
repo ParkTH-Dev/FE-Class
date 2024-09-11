@@ -1,6 +1,7 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useContext } from "react";
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
+import { TodoContext } from "../App";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -22,7 +23,9 @@ const ListWrapper = styled.div`
   gap: 20px;
 `;
 
-const TodoList = ({ todo, onUpdate, onDelete }) => {
+const TodoList = () => {
+  const { todo = [] } = useContext(TodoContext);
+
   const [search, setSearch] = useState("");
   const onChangeSearch = (e) => {
     setSearch(e.target.value);
@@ -67,12 +70,7 @@ const TodoList = ({ todo, onUpdate, onDelete }) => {
           <TodoItem key={item.id} {...item} />
         ))} */}
         {getSearchResult().map((item) => (
-          <TodoItem
-            key={item.id}
-            {...item}
-            onUpdate={onUpdate}
-            onDelete={onDelete}
-          />
+          <TodoItem key={item.id} {...item} />
         ))}
       </ListWrapper>
     </Wrapper>
