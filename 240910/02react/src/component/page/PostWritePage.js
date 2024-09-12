@@ -1,22 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import TextInput from "../ui/TextInput";
+import Button from "../ui/Button";
+
 const Wrapper = styled.div`
-  background-color: #ccc;
-  height: 100vh;
-  width: 100%;
+  width: calc(100% - 32px);
+  margin: 0 auto;
+  padding: 16px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding-top: 100px;
-  h1 {
-    font-size: 40px;
-    color: #fff;
+`;
+
+const Container = styled.div`
+  width: 100%;
+  max-width: 720px;
+  & * {
+    margin-bottom: 16px;
   }
 `;
+
 const PostWritePage = () => {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const navigate = useNavigate();
   return (
     <Wrapper>
-      <h1>PostWritePage</h1>
+      <Container>
+        <TextInput
+          value={title}
+          height={20}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <TextInput
+          value={content}
+          height={480}
+          onChange={(e) => setContent(e.target.value)}
+        />
+        <Button title="글 작성하기" onClick={() => navigate("/")} />
+      </Container>
     </Wrapper>
   );
 };

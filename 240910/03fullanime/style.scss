@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "Back to Black";
+  src: url("./font/Back_to_Black_Demo.otf"),
+    url("./font/Back_to_Black_Demo.ttf");
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -30,7 +36,7 @@ body.nav_active {
   }
   & nav {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0px);
   }
 }
 
@@ -40,18 +46,18 @@ body.nav_active {
   right: 30px;
   width: 30px;
   height: 25px;
-  cursor: pointer;
   z-index: 3;
-  & > div {
+  cursor: pointer;
+  div {
     position: relative;
     width: 100%;
     height: 100%;
     span {
       position: absolute;
       left: 0;
-      background: #fff;
       width: 100%;
       height: 2px;
+      background: #fff;
       transition: all 0.3s ease-in-out;
       &:nth-child(1) {
         top: 0;
@@ -66,13 +72,13 @@ body.nav_active {
   }
 }
 
-.nav {
+nav {
   position: fixed;
-  top: 30px;
+  top: 21px;
   right: 60px;
-  transform: translateX(50px);
   z-index: 2;
   opacity: 0;
+  transform: translateX(50px);
   transition: all 0.3s ease-in-out;
   ul {
     display: flex;
@@ -82,14 +88,14 @@ body.nav_active {
     margin-right: 20px;
     li a {
       color: #fff;
-      font-size: 1.3rem;
+      font-size: 1.5rem;
     }
   }
 }
 
 .section {
   &#sec0 {
-    background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+    background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
     svg,
     img {
       position: absolute;
@@ -97,18 +103,18 @@ body.nav_active {
       left: 50%;
     }
     .svg1 {
-      transform: translate(-50%, -50%);
       fill: none;
       stroke: #fff;
       stroke-width: 2;
+      transform: translate(-50%, -50%);
     }
     .svg2 {
-      transform: translate(-49.5%, -49.5%);
       width: 657px;
+      transform: translate(-49.5%, -49.5%);
     }
   }
   &#sec1 {
-    background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
+    background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
     .inner {
       flex-direction: column;
       img {
@@ -125,30 +131,21 @@ body.nav_active {
             .gage {
               width: 15px;
               height: 150px;
-              background: rgba($color: #fff, $alpha: 0.5);
-              border-radius: 5px;
-              // opacity: 0.3;
+              background: rgba($color: #ffffff, $alpha: 0.3);
               margin: 0 auto;
               padding: 5px;
-              margin-bottom: 20px;
               position: relative;
-              box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.1);
               .gage_in {
-                box-shadow: 0 0 5px rgba($color: #f99185, $alpha: 0.3);
-                width: 7px;
-                height: 0;
-                background: #f99185;
                 position: absolute;
-                bottom: 5px;
-                left: 50%;
-                transform: translateX(-50%);
-                border-radius: 5px;
+                bottom: 0;
+                width: 5px;
+                height: 0;
+                background: #fff;
               }
             }
-            .gage_title {
+            .gage_tit {
               color: #fff;
-              text-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.3);
-              font-size: 20px;
+              margin-top: 10px;
             }
           }
         }
@@ -160,7 +157,7 @@ body.nav_active {
     transition: all 0.3s;
     .inner {
       h1 {
-        // opacity: 0;
+        opacity: 0;
         transform: translateY(-50px);
         img {
           width: 400px;
@@ -172,8 +169,8 @@ body.nav_active {
         height: 35vw;
         max-height: 550px;
         margin-left: 50px;
+        opacity: 0;
         transform: translateY(-50px);
-        opacity: 1;
         .sec2_slider {
           position: relative;
           width: 100%;
@@ -210,11 +207,9 @@ body.nav_active {
           }
         }
         .btn_wrap {
-          color: #fff;
           display: flex;
-          width: 100%;
           justify-content: space-around;
-          align-items: center;
+          width: 100%;
           margin-top: 30px;
           .slide_btn {
             display: inline-block;
@@ -223,22 +218,23 @@ body.nav_active {
             text-indent: -9999px;
             background: url("./img/arr_01.png") center/cover no-repeat;
             &.right {
-              background: url("./img/arr_02.png") center/cover no-repeat;
+              background-image: url("./img/arr_02.png");
             }
           }
           .slide_icons {
             display: flex;
-            gap: 10px;
             li {
-              width: 15px;
-              height: 10px;
+              width: 10px;
+              height: 5px;
               text-indent: -9999px;
-              background: rgba($color: #fff, $alpha: 0.6);
+              background: rgba($color: #ffffff, $alpha: 0.6);
+              margin: 0 2px;
+              margin-top: 10px;
               border-radius: 5px;
               cursor: pointer;
               transition: all 0.3s;
               &.active {
-                width: 30px;
+                width: 20px;
                 background: #fff;
               }
             }
@@ -248,10 +244,51 @@ body.nav_active {
     }
   }
   &#sec3 {
-    background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+    background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+    h1 {
+      font-family: "Back to Black";
+      font-size: 100px;
+      color: #fff;
+      letter-spacing: -3px;
+      transform: translateX(-100px);
+      position: relative;
+      z-index: 2;
+      span {
+        opacity: 0;
+      }
+    }
+    .sec3_svg {
+      fill: #667eea;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
   }
   &#sec4 {
-    background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+    background-image: linear-gradient(to top, #37ecba 0%, #72afd3 100%);
+    img {
+      width: 400px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 1;
+      z-index: 2;
+      cursor: pointer;
+    }
+    .img_wrap {
+      cursor: pointer;
+      width: 500px;
+      height: 500px;
+      display: flex;
+      flex-wrap: wrap;
+      // border: 1px solid #fff;
+      .tail {
+        background: #009efd;
+        width: calc(100% / 20);
+        height: calc(100% / 20);
+      }
+    }
   }
   .inner {
     width: 1200px;
@@ -260,17 +297,10 @@ body.nav_active {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
   }
 }
 
-#fp-nav {
-  ul {
-    box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.1);
-    background: #fac5ce;
-    padding: 20px 10px;
-    border-radius: 20px;
-    li a span {
-      background: #fff;
-    }
-  }
+#fp-nav ul li a span {
+  background: #fff;
 }

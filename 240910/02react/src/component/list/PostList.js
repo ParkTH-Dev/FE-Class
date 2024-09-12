@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PostListItem from "./PostListItem";
 
 const Wrapper = styled.div`
   display: flex;
@@ -8,14 +9,16 @@ const Wrapper = styled.div`
   align-items: flex-start;
 `;
 
-const PostList = ({ posts, onClick }) => {
+const PostList = ({ posts, onClickItem }) => {
   return (
     <Wrapper>
-      <div>리액트에서 컴포넌트 랜더링하기</div>
-      <div>리액트 컴포넌트 개념 소개</div>
-      <div>리액트와 자바스크립트의 상관관계</div>
-      <div>안녕하세요! 태환입니다!</div>
-      <div>postlist</div>
+      {posts.map((post) => (
+        <PostListItem
+          key={post.id}
+          post={post}
+          onClick={() => onClickItem(post)}
+        />
+      ))}
     </Wrapper>
   );
 };

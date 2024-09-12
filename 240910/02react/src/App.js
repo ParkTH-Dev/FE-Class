@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import PostWritePage from "./component/page/PostWritePage";
 import MainPage from "./component/page/MainPage";
+import PostWritePage from "./component/page/PostWritePage";
+import PostViewPages from "./component/page/PostViewPage";
 import PostViewPage from "./component/page/PostViewPage";
 
 const MainTitleText = styled.h2`
-  font-size: 30px;
+  font-size: 24px;
   font-weight: bold;
   text-align: center;
 `;
