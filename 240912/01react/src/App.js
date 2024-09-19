@@ -1,15 +1,13 @@
-import styled from "styled-components";
+import React, { useReducer, useRef, useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import styled from "styled-components";
 import Home from "./pages/Home";
-import Edit from "./pages/Edit";
 import New from "./pages/New";
 import Diary from "./pages/Diary";
-import React, { useEffect, useReducer, useRef, useState } from "react";
-
+import Edit from "./pages/Edit";
 const Wrapper = styled.div`
   padding: 20px;
 `;
-
 const reducer = (state, action) => {
   switch (action.type) {
     case "INIT": {
@@ -19,46 +17,56 @@ const reducer = (state, action) => {
       return [action.data, ...state];
     }
     case "UPDATE": {
-      return state.map((item) =>
-        String(item.id) === String(action.data.id) ? { ...action.data } : item
+      return state.map((it) =>
+        String(it.id) === String(action.data.id) ? { ...action.data } : it
       );
     }
     case "DELETE": {
-      return state.filter(
-        (item) => String(item.id) !== String(action.targetId)
-      );
+      return state.filter((it) => String(it.id) !== String(action.targetId));
     }
     default: {
       return state;
     }
   }
 };
-
 const mockData = [
   {
     id: "mock1",
-    data: new Date().getTime(),
+    date: new Date().getTime() - 1,
     content: "mock1",
     emotionId: 1,
   },
   {
     id: "mock2",
-    data: new Date().getTime(),
-    content: "mock2",
-    emotionId: 1,
+    date: new Date().getTime() - 2,
+    content:
+      "mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2",
+    emotionId: 2,
   },
   {
     id: "mock3",
-    data: new Date().getTime(),
+    date: new Date().getTime() - 3,
     content: "mock3",
-    emotionId: 1,
+    emotionId: 3,
+  },
+  {
+    id: "mock4",
+    date: new Date().getTime() - 4,
+    content: "mock4",
+    emotionId: 4,
+  },
+  {
+    id: "mock5",
+    date: new Date().getTime() - 5,
+    content: "mock5",
+    emotionId: 5,
   },
 ];
-
+// state만 따로 모아서 간다. 성격()
 export const DiaryStateContext = React.createContext();
+// 함수만 따로 모아서 가도록 한다. 성격()
 export const DiaryDispatchContext = React.createContext();
-
-function App() {
+const App = () => {
   const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [data, dispatch] = useReducer(reducer, []);
   const idRef = useRef(0);
@@ -69,28 +77,27 @@ function App() {
     });
     setIsDataLoaded(true);
   }, []);
-
   const onCreate = (date, content, emotionId) => {
     dispatch({
       type: "CREATE",
       data: {
         id: idRef.current,
         date: new Date(date).getTime(),
-        content,
-        emotionId,
+        content: content,
+        // 축약가능
+        emotionId: emotionId,
       },
     });
     idRef.current += 1;
   };
-
   const onUpdate = (targetId, date, content, emotionId) => {
     dispatch({
       type: "UPDATE",
       data: {
         id: targetId,
         date: new Date(date).getTime(),
-        content,
-        emotionId,
+        content: content,
+        emotionId: emotionId,
       },
     });
   };
@@ -104,20 +111,23 @@ function App() {
     return <div>데이터를 불러오는 중입니다!</div>;
   } else {
     return (
-      <DiaryStateContext.Provider value={data}>
-        <DiaryDispatchContext.Provider value={{ onCreate, onUpdate, onDelete }}>
-          <Wrapper>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/new" element={<New />} />
-              <Route path="/edit" element={<Edit />} />
-              <Route path="/diary/:id" element={<Diary />} />
-            </Routes>
-          </Wrapper>
-        </DiaryDispatchContext.Provider>
-      </DiaryStateContext.Provider>
+      <div className="App">
+        <DiaryStateContext.Provider value={data}>
+          <DiaryDispatchContext.Provider
+            value={{ onCreate, onUpdate, onDelete }}
+          >
+            <Wrapper>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/new" element={<New />} />
+                <Route path="/diary/:id" element={<Diary />} />
+                <Route path="/edit/:id" element={<Edit />} />
+              </Routes>
+            </Wrapper>
+          </DiaryDispatchContext.Provider>
+        </DiaryStateContext.Provider>
+      </div>
     );
   }
-}
-
+};
 export default App;
