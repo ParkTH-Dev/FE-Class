@@ -29,7 +29,7 @@ const Diary = () => {
           leftChild={<Button text={"< 뒤로가기"} onClick={goBack} />}
           rightChild={<Button text={"수정하기"} onClick={goEdit} />}
         />
-        <Viewer />
+        <Viewer content={content} emotionId={emotionId} />
       </div>
     );
   }

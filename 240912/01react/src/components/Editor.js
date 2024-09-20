@@ -18,7 +18,7 @@ const TextArea = styled.textarea`
   background: #ececec;
   padding: 20px;
   font-size: 20px;
-  width: 100%;
+  width: 93%;
   min-height: 200px;
   resize: none;
 `;

@@ -33,14 +33,14 @@ const mockData = [
   {
     id: "mock1",
     date: new Date().getTime() - 1,
-    content: "mock1",
+    content:
+      "여기는 컨텐츠가 들어가는 곳이다~ 이말이야~~~ 호호호여기는 컨텐츠가 들어가는 곳이다~ 이말이야~~~ 호호호여기는 컨텐츠가 들어가는 곳이다~ 이말이야~~~ 호호호여기는 컨텐츠가 들어가는 곳이다~ 이말이야~~~ 호호호",
     emotionId: 1,
   },
   {
     id: "mock2",
     date: new Date().getTime() - 2,
-    content:
-      "mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2mock2",
+    content: "mock2",
     emotionId: 2,
   },
   {
