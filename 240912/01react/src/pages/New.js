@@ -5,6 +5,7 @@ import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import Editor from "../components/Editor";
 import { DiaryDispatchContext } from "../App";
+import { setPageTitle } from "../util";
 
 const Wrapper = styled.div``;
 
@@ -23,6 +24,10 @@ const New = () => {
     onCreate(date, content, emotionId);
     navigate("/");
   };
+
+  useEffect(() => {
+    setPageTitle("New Diary");
+  }, []);
   return (
     <Wrapper>
       <Header

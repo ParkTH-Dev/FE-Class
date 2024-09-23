@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import New from "./pages/New";
 import Diary from "./pages/Diary";
 import Edit from "./pages/Edit";
+import GlobalStyles from "./styles/GlobalStyles.styles";
 const Wrapper = styled.div`
   padding: 20px;
 `;
@@ -14,54 +15,30 @@ const reducer = (state, action) => {
       return action.data;
     }
     case "CREATE": {
-      return [action.data, ...state];
+      const newState = [action.data, ...state];
+      localStorage.setItem("diary", JSON.stringify(newState));
+      return newState;
     }
     case "UPDATE": {
-      return state.map((it) =>
+      const newState = state.map((it) =>
         String(it.id) === String(action.data.id) ? { ...action.data } : it
       );
+      localStorage.setItem("diary", JSON.stringify(newState));
+      return newState;
     }
     case "DELETE": {
-      return state.filter((it) => String(it.id) !== String(action.targetId));
+      const newState = state.filter(
+        (it) => String(it.id) !== String(action.targetId)
+      );
+      localStorage.setItem("diary", JSON.stringify(newState));
+      return newState;
     }
     default: {
       return state;
     }
   }
 };
-const mockData = [
-  {
-    id: "mock1",
-    date: new Date().getTime() - 1,
-    content:
-      "여기는 컨텐츠가 들어가는 곳이다~ 이말이야~~~ 호호호여기는 컨텐츠가 들어가는 곳이다~ 이말이야~~~ 호호호여기는 컨텐츠가 들어가는 곳이다~ 이말이야~~~ 호호호여기는 컨텐츠가 들어가는 곳이다~ 이말이야~~~ 호호호",
-    emotionId: 1,
-  },
-  {
-    id: "mock2",
-    date: new Date().getTime() - 2,
-    content: "mock2",
-    emotionId: 2,
-  },
-  {
-    id: "mock3",
-    date: new Date().getTime() - 3,
-    content: "mock3",
-    emotionId: 3,
-  },
-  {
-    id: "mock4",
-    date: new Date().getTime() - 4,
-    content: "mock4",
-    emotionId: 4,
-  },
-  {
-    id: "mock5",
-    date: new Date().getTime() - 5,
-    content: "mock5",
-    emotionId: 5,
-  },
-];
+
 // state만 따로 모아서 간다. 성격()
 export const DiaryStateContext = React.createContext();
 // 함수만 따로 모아서 가도록 한다. 성격()
@@ -71,9 +48,21 @@ const App = () => {
   const [data, dispatch] = useReducer(reducer, []);
   const idRef = useRef(0);
   useEffect(() => {
+    const rawDate = localStorage.getItem("diary");
+    if (!rawDate) {
+      setIsDataLoaded(true);
+      return;
+    }
+    const localDate = JSON.parse(rawDate);
+    if (localDate.length === 0) {
+      setIsDataLoaded(true);
+      return;
+    }
+    localDate.sort((a, b) => Number(b.id) - Number(a.id));
+    idRef.current = localDate[0].id + 1;
     dispatch({
       type: "INIT",
-      data: mockData,
+      data: localDate,
     });
     setIsDataLoaded(true);
   }, []);
@@ -111,7 +100,8 @@ const App = () => {
     return <div>데이터를 불러오는 중입니다!</div>;
   } else {
     return (
-      <div className="App">
+      <>
+        <GlobalStyles />
         <DiaryStateContext.Provider value={data}>
           <DiaryDispatchContext.Provider
             value={{ onCreate, onUpdate, onDelete }}
@@ -126,7 +116,7 @@ const App = () => {
             </Wrapper>
           </DiaryDispatchContext.Provider>
         </DiaryStateContext.Provider>
-      </div>
+      </>
     );
   }
 };

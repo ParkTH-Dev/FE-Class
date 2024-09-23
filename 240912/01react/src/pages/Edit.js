@@ -1,15 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import useDiary from "../hooks/useDiary";
 import { DiaryDispatchContext } from "../App";
+import Editor from "../components/Editor";
+import { setPageTitle } from "../util";
 
 const Wrapper = styled.div``;
 
 const Edit = () => {
-  const { onDelete } = useContext(DiaryDispatchContext);
+  const { onDelete, onUpdate } = useContext(DiaryDispatchContext);
 
   const { id } = useParams();
   const data = useDiary(id);
@@ -27,6 +29,16 @@ const Edit = () => {
       navigate("/");
     }
   };
+  const onSubmit = (data) => {
+    if (window.confirm("일기를 정말 수정할까요?")) {
+      const { date, content, emotionId } = data;
+      onUpdate(id, date, content, emotionId);
+      navigate("/");
+    }
+  };
+  useEffect(() => {
+    setPageTitle(`${id} Diary Edit`);
+  }, []);
 
   if (!data) {
     return (
@@ -53,6 +65,7 @@ const Edit = () => {
             />
           }
         />
+        <Editor initData={data} onSubmit={onSubmit} />
       </Wrapper>
     );
   }

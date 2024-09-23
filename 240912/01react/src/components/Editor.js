@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { getFormattedDate, emotionList } from "../util";
 import styled from "styled-components";
 import Button from "./Button";
@@ -79,12 +79,12 @@ const Editor = ({ initData, onSubmit }) => {
   const handleGoBack = () => {
     navigate(-1);
   };
-  const handleChangeEmotion = (emotionId) => {
-    setState({
+  const handleChangeEmotion = useCallback((emotionId) => {
+    setState((state) => ({
       ...state,
       emotionId,
-    });
-  };
+    }));
+  }, []);
 
   return (
     <div>

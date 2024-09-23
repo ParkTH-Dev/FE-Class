@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Button from "../components/Button";
 import styled from "styled-components";
 import { DiaryStateContext } from "../App";
-import { getMonthRangeByDate } from "../util";
+import { getMonthRangeByDate, setPageTitle } from "../util";
 import DiaryList from "../components/DiaryList";
 
 const Wrapper = styled.div``;
@@ -24,6 +24,9 @@ const Home = () => {
       setFilteredData([]);
     }
   }, [data, pivotDate]);
+  useEffect(() => {
+    setPageTitle("Welcome TeaHwan Diary");
+  }, []);
 
   const headerTitle = `${pivotDate.getFullYear()}년 ${
     pivotDate.getMonth() + 1
