@@ -1,7 +1,8 @@
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, updateDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import styled from "styled-components";
-import { auth, db } from "../firebase";
+import { auth, db, storage } from "../firebase";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 const Form = styled.form`
   display: flex;
@@ -78,12 +79,21 @@ const PostForm = () => {
   const [isLoading, setLoading] = useState(false);
   const [post, setPost] = useState("");
   const [file, setFile] = useState<File | null>(null);
+
+  const maxFileSize = 5 * 1024 * 1024;
+
   const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setPost(e.target.value);
   };
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
-    if (files && files.length === 1) setFile(files[0]);
+    if (files && files.length === 1) {
+      if (files[0].size > maxFileSize) {
+        alert("최대 5MB 파일만 업로드 할 수 있습니다.");
+        return;
+      }
+      setFile(files[0]);
+    }
   };
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -92,18 +102,37 @@ const PostForm = () => {
     if (!user || isLoading || post === "" || post.length > 180) return;
     try {
       setLoading(true);
-      await addDoc(collection(db, "contents"), {
+      const doc = await addDoc(collection(db, "contents"), {
         post,
         createdAt: Date.now(),
         username: user?.displayName || "Anonymous",
         userId: user.uid,
       });
+      if (file) {
+        const locationRef = ref(storage, `contents/${user.uid}/${doc.id}`);
+        const result = await uploadBytes(locationRef, file);
+        const url = await getDownloadURL(result.ref);
+        const fileType = file.type;
+        if (fileType.startsWith("image/")) {
+          await updateDoc(doc, {
+            photo: url,
+          });
+        }
+        if (fileType.startsWith("video/")) {
+          await updateDoc(doc, {
+            video: url,
+          });
+        }
+      }
+      setPost("");
+      setFile(null);
     } catch (e) {
       console.error(e);
     } finally {
       setLoading(false);
     }
   };
+
   return (
     <Form onSubmit={onSubmit}>
       <TextArea
@@ -112,6 +141,7 @@ const PostForm = () => {
         name="contents"
         id="contents"
         placeholder="What is Happening"
+        required
       ></TextArea>
       <AtteachFileButton htmlFor="file">
         {file ? "Content Added 🐸" : "Add"}
@@ -120,7 +150,7 @@ const PostForm = () => {
         onChange={onFileChange}
         type="file"
         id="file"
-        accept="image/*, image/*"
+        accept="video/*, image/*"
       />
       <SubmitButton type="submit" value={isLoading ? "Posting..." : "Post"} />
     </Form>
