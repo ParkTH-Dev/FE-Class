@@ -1,6 +1,5 @@
 import {
   collection,
-  getDocs,
   limit,
   onSnapshot,
   orderBy,
@@ -13,7 +12,7 @@ import { db } from "../firebase";
 import Post from "./Post";
 
 export interface IPost {
-  createdAt: number;
+  createdAt: string;
   photo?: string;
   video?: string;
   post: string;
