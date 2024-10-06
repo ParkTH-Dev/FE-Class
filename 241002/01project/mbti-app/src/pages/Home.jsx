@@ -41,6 +41,9 @@ const LogoImg = styled(motion.div)`
 const Desc = styled.div`
   margin: 10px 0;
   font-size: 20px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background-color: crimson;
 `;
 
 const Home = () => {

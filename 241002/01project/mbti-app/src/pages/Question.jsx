@@ -7,7 +7,7 @@ import { createSearchParams, useNavigate } from "react-router-dom";
 
 const Wrapper = styled(motion.div)`
   width: 100%;
-  height: 97vh;
+  height: 98vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,6 +21,10 @@ const Title = styled.div`
   margin-bottom: 10px;
   background-color: crimson;
   border-radius: 8px;
+  @media screen and (max-width: 780px) {
+    font-size: 24px;
+    margin: 20px;
+  }
 `;
 const ButtonGroup = styled.div`
   display: flex;
@@ -31,6 +35,22 @@ const ButtonGroup = styled.div`
     width: 400px;
     height: 200px;
     font-size: 26px;
+  }
+  @media screen and (max-width: 780px) {
+    flex-direction: column;
+    button {
+      width: 300px;
+      height: 150px;
+      font-size: 20px;
+    }
+  }
+  @media screen and (max-width: 360px) {
+    flex-direction: column;
+    button {
+      width: 200px;
+      height: 100px;
+      font-size: 20px;
+    }
   }
 `;
 

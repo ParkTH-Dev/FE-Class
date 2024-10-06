@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { ResultData } from "../assets/ResultData";
+import KakaoShareBtn from "../components/KakaoShareBtn";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -43,6 +44,13 @@ const LogoImg = styled(motion.div)`
 const Desc = styled.div`
   margin: 10px 0;
   font-size: 22px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background-color: crimson;
+`;
+const ButtonGroup = styled.div`
+  display: flex;
+  gap: 20px;
 `;
 
 const Result = () => {
@@ -77,9 +85,11 @@ const Result = () => {
             src={resultData.image}
           />
         </LogoImg>
-        <Desc>예비집사님과 찰떡인 고양이는? '{resultData.name}'입니다! 😻</Desc>
-        <Desc>{resultData.desc} 😻</Desc>
-        <Button onClick={handleClickBtn}>테스트 다시 시작하기</Button>
+        <Desc>예비집사님과 찰떡인 고양이는? {resultData.name}입니다! 😻</Desc>
+        <ButtonGroup>
+          <Button onClick={handleClickBtn}>테스트 다시 시작하기</Button>
+          <KakaoShareBtn data={resultData} />
+        </ButtonGroup>
       </Contents>
     </Wrapper>
   );
