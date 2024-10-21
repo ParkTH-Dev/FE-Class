@@ -1,11 +1,13 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Container, Button, Nav, Form } from "react-bootstrap";
 
 const Wrapper = styled.div`
-  nav {
-    padding: 20px;
+  padding: 0px 0px;
+  .inner-item {
+    padding: 0px 40px;
   }
 `;
 
@@ -17,7 +19,7 @@ const BtnItem = styled.span`
   color: #fff;
   transition: color 0.3s;
   &:hover {
-    color: #dc143c;
+    color: crimson;
   }
 `;
 
@@ -25,10 +27,10 @@ const Navigation = () => {
   return (
     <Wrapper>
       <Navbar bg="dark" variant="dark">
-        <Container fluid>
+        <Container fluid className="inner-item">
           <Navbar.Brand href="#">
             <Logo
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1024px-Netflix_2015_logo.svg.png"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/800px-Netflix_2015_logo.svg.png"
               alt="logo"
             />
           </Navbar.Brand>
@@ -39,10 +41,10 @@ const Navigation = () => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav.Link href="#action1" as={Link} to="/">
+              <Nav.Link href="/">
                 <BtnItem>Home</BtnItem>
               </Nav.Link>
-              <Nav.Link href="#action2" as={Link} to="/movie">
+              <Nav.Link href="/movie">
                 <BtnItem>Movie</BtnItem>
               </Nav.Link>
             </Nav>

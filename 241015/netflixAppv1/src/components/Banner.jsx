@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 const BgImg = styled.div`
@@ -21,35 +22,37 @@ const Img = styled.img`
   height: 100%;
   object-fit: cover;
 `;
+
 const BannerInfo = styled.div`
   position: absolute;
   top: 50%;
-  left: 30px;
-  transform: translate(0, -50%);
-`;
-const MovieTitle = styled.h1`
-  color: #fff;
-  font-size: 40px;
-  font-weight: 600;
-`;
-const MovieOverView = styled.p`
-  font-size: 22px;
-  width: 810px;
-  line-height: 35px;
+  left: 10%;
+  transform: translateY(-50%);
 `;
 
-const Banner = ({ movie }) => {
-  const imgUrl = "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/";
+const MovieTitle = styled.h1`
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 10px;
+`;
+
+const MovieOverView = styled.p`
+  width: 800px;
+  font-size: 22px;
+  line-height: 1.4;
+`;
+
+const Banner = ({ movies }) => {
   return (
-    <div>
-      <BgImg>
-        <Img src={`${imgUrl}${movie?.backdrop_path}`} />
-        <BannerInfo>
-          <MovieTitle>{movie.title}</MovieTitle>
-          <MovieOverView>{movie.overview}</MovieOverView>
-        </BannerInfo>
-      </BgImg>
-    </div>
+    <BgImg>
+      <Img
+        src={`https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces${movies.backdrop_path}`}
+      />
+      <BannerInfo>
+        <MovieTitle>{movies.title}</MovieTitle>
+        <MovieOverView>{movies.overview}</MovieOverView>
+      </BannerInfo>
+    </BgImg>
   );
 };
 
