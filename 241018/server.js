@@ -74,10 +74,10 @@ const typeDefs = gql`
     year: Int!
     rating: Float!
     runtime: Float!
-    genres: [String!]!
-    summary: String!
-    description_full: String!
-    synopsis: String!
+    genres: [String!]
+    summary: String
+    description_full: String
+    synopsis: String
     yt_trailer_code: String!
     language: String!
     background_image: String!
