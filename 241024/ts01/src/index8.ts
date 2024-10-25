@@ -13,6 +13,7 @@
 // ): unknown[] => {};
 
 // hight level 함수 (*고급함수)
+// 선언형 방식
 const map = <T>(arr: T[], callback: (item: T) => T): T[] => {
   let result = [];
   for (let i = 0; i < arr.length; i++) {
@@ -21,5 +22,6 @@ const map = <T>(arr: T[], callback: (item: T) => T): T[] => {
   return result;
 };
 // low level 함수 (*저급함수)
+// 명령형 방식
 const arrTest = [1, 2, 3];
 const result = arrTest.map((item) => item);
