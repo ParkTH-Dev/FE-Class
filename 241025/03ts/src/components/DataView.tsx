@@ -18,16 +18,12 @@ const Wrapper = styled.div`
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
   }
 `;
-interface Props {
-  toDoList: Array<string>;
-  onDelete: (todo: string) => void;
-}
 
-const DataView = ({ toDoList, onDelete }: Props) => {
+const DataView = () => {
   return (
     <Wrapper>
       <Title label="할 일 목록" />
-      <TodoList toDoList={toDoList} onDelete={onDelete} />
+      <TodoList />
     </Wrapper>
   );
 };

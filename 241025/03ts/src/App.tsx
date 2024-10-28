@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import DataView from "./components/DataView";
-import { useState } from "react";
-import TextInput from "./components/TextInput";
-import Button from "./components/Button";
+import InputWrap from "./components/InputWrap";
+import { ToDoListContextProvider } from "./\bcontexts/ToDoContext";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -15,24 +14,28 @@ const Wrapper = styled.div`
   gap: 16px;
 `;
 
-const mockData = ["typescript 복습", "react예습", "nextjs 공부"];
+// const mockData = ["typescript 복습", "react예습", "nextjs 공부"];
 
 function App() {
-  const [toDo, setToDo] = useState("");
-  const [toDoList, setToDoList] = useState(mockData);
-  const onDelete = (todo: string) => {
-    setToDoList(toDoList.filter((item) => item !== todo));
-  };
-  const onAdd = () => {
-    if (toDo === "") return;
-    setToDoList([...toDoList, toDo]);
-    setToDo("");
-  };
+  // const [toDo, setToDo] = useState("");
+  // const [isOpen, setIsOpen] = useState(false);
+  // const [toDoList, setToDoList] = useState(mockData);
+  // const onDelete = (todo: string) => {
+  //   setToDoList(toDoList.filter((item) => item !== todo));
+  // };
+  // const onAdd = (toDo: string) => {
+  //   if (toDo === "") return;
+  //   setToDoList([...toDoList, toDo]);
+  //   setIsOpen(false);
+  //   setToDo("");
+  // };
+
   return (
     <Wrapper>
-      <DataView toDoList={toDoList} onDelete={onDelete} />
-      <TextInput value={toDo} onChange={setToDo} />
-      <Button label={"추가"} color="#304ffe" onClick={onAdd} />
+      <ToDoListContextProvider>
+        <DataView />
+        <InputWrap />
+      </ToDoListContextProvider>
     </Wrapper>
   );
 }

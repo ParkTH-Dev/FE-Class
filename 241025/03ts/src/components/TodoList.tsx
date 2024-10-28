@@ -1,17 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
+import { ToDoListContext } from "../\bcontexts/ToDoContext";
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
 `;
 
-interface Props {
-  toDoList: Array<string>;
-  onDelete?: (todo: string) => void;
-}
-const TodoList = ({ toDoList, onDelete }: Props) => {
+const TodoList = () => {
+  const { toDoList, onDelete } = useContext(ToDoListContext);
   return (
     <Wrapper>
       {toDoList.map((todo, index) => (
