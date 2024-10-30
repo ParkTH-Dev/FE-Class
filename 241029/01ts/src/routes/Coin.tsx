@@ -1,9 +1,16 @@
-import { useLocation, useParams } from "react-router-dom";
+// import React, { useState, useEffect } from "react";
+import {
+  useParams,
+  useLocation,
+  Outlet,
+  Link,
+  useMatch,
+} from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import styled from "styled-components";
-import { useEffect, useState } from "react";
-import { theme } from "../theme";
-import Chart from "./Chart";
-import Price from "./Price";
+import { fetchCoinInfo, fetchCoinPrice } from "../api";
+import { CoinInterface } from "./Coins";
+import { Helmet } from "react-helmet";
 
 const Wrapper = styled.main`
   width: 100%;
@@ -21,11 +28,11 @@ const Title = styled.h1`
 `;
 const Loader = styled.span``;
 
-const OverView = styled.div`
+const Overview = styled.div`
   color: ${({ theme }) => theme.bgColor};
   width: 600px;
 `;
-const OverViewItem = styled.div`
+const OverviewItem = styled.div`
   background: ${({ theme }) => theme.textColor};
   border-radius: 8px;
   display: flex;
@@ -49,29 +56,56 @@ const Description = styled.div`
   width: 600px;
   background: ${({ theme }) => theme.accentColor};
   color: ${({ theme }) => theme.textColor};
-  padding: 10px 20px;
+  padding: 30px;
   border-radius: 8px;
   margin-bottom: 10px;
+  line-height: 1.7;
 `;
 
-interface IRouterParams {
+const Tabs = styled.div`
+  width: 600px;
+  display: flex;
+  gap: 10px;
+`;
+
+const Tab = styled.span<IsActive>`
+  flex: 1;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  background: ${(props) =>
+    props.isActive ? props.theme.textColor : props.theme.accentColor};
+  color: ${(props) =>
+    props.isActive ? props.theme.accentColor : props.theme.textColor};
+  padding: 8px 0;
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s;
+  cursor: pointer;
+  &:hover {
+    background: ${(props) => props.theme.textColor};
+    color: ${(props) => props.theme.accentColor};
+  }
+`;
+
+interface RouterParams {
   coinId: string;
 }
 
-interface ILocationState {
+interface LocationState {
   state: string;
 }
 
-interface IInfoData {
-  id: string;
-  name: string;
-  symbol: string;
-  rank: number;
-  is_new: boolean;
-  is_active: boolean;
-  type: string;
-}
-interface IPriceData {
+// interface InfoData {
+//   id: string;
+//   name: string;
+//   symbol: string;
+//   rank: number;
+//   is_new: boolean;
+//   is_active: boolean;
+//   type: string;
+// }
+
+interface PriceData {
   id: string;
   name: string;
   symbol: string;
@@ -105,74 +139,99 @@ interface IPriceData {
   };
 }
 
+interface IsActive {
+  isActive: boolean;
+}
+
 const Coin = () => {
-  const [loading, setLoading] = useState(true);
-  const [info, setInfo] = useState<IInfoData>();
-  const [priceInfo, setPriceInfo] = useState<IPriceData>();
-  const { state } = useLocation() as ILocationState;
-  const { coinId } = useParams<IRouterParams | any>();
-  useEffect(() => {
-    (async () => {
-      const infoData = await (
-        await fetch(
-          `https://my-json-server.typicode.com/Divjason/coinlist/coins/${coinId}`
-        )
-      ).json();
-      const priceData = await (
-        await fetch(
-          `https://my-json-server.typicode.com/Divjason/coinprice/coinprice/${coinId}`
-        )
-      ).json();
-      setInfo(infoData);
-      setPriceInfo(priceData);
-      setLoading(false);
-    })();
-  }, []);
+  const { state } = useLocation() as LocationState;
+  const { coinId } = useParams<RouterParams | any>();
+  const priceMatch = useMatch("/:coinId/price");
+  const chartMatch = useMatch("/:coinId/chart");
+  // useEffect(() => {
+  //   (async () => {
+  //     const infoData = await (
+  //       await fetch(
+  //         `https://my-json-server.typicode.com/Divjason/coinlist/coins/${coinId}`
+  //       )
+  //     ).json();
+  //     const priceData = await (
+  //       await fetch(
+  //         `https://my-json-server.typicode.com/Divjason/coinprice/coinprice/${coinId}`
+  //       )
+  //     ).json();
+  //     setInfo(infoData);
+  //     setPriceInfo(priceData);
+  //     setLoading(false);
+  //   })();
+  // }, []);
+
+  const { isLoading: infoLoading, data: infoData } = useQuery<CoinInterface>({
+    queryKey: ["info", coinId],
+    queryFn: () => fetchCoinInfo(coinId),
+  });
+  const { isLoading: priceLoading, data: priceData } = useQuery<PriceData>({
+    queryKey: ["info", coinId],
+    queryFn: () => fetchCoinPrice(coinId),
+    refetchInterval: 5000,
+  });
+
+  const loading = infoLoading || priceLoading;
 
   return (
     <Wrapper>
+      <Helmet>
+        <title>{infoData?.name}</title>
+      </Helmet>
       <Header>
-        <Title>{state ? state : loading ? "loading..." : info?.name}</Title>
+        <Title>{state ? state : loading ? "Loading..." : infoData?.name}</Title>
       </Header>
       {loading ? (
-        <Loader>loading...</Loader>
+        <Loader>Loading...</Loader>
       ) : (
         <>
-          <OverView>
-            <OverViewItem>
-              <span>Rank:</span>
-              <span>{info?.rank}</span>
-            </OverViewItem>
-            <OverViewItem>
-              <span>Symbol:</span>
-              <span>{info?.symbol}</span>
-            </OverViewItem>
-            <OverViewItem>
-              <span>Open Source :</span>
-              <span>{info?.is_active ? "Yes" : "No"}</span>
-            </OverViewItem>
-          </OverView>
+          <Overview>
+            <OverviewItem>
+              <span>Rank : </span>
+              <span>{infoData?.rank}</span>
+            </OverviewItem>
+            <OverviewItem>
+              <span>Symbol : </span>
+              <span>{infoData?.symbol}</span>
+            </OverviewItem>
+            <OverviewItem>
+              <span>Open Source : </span>
+              <span>{infoData?.is_active ? "Yes" : "No"}</span>
+            </OverviewItem>
+          </Overview>
           <Description>
-            🐸 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
-            accusamus quas laudantium perspiciatis dicta reiciendis ad dolor
-            modi, nam omnis deleniti assumenda debitis hic, et facere eius.
-            Adipisci, ad minima. Nemo obcaecati magni dolorum, debitis ipsam
-            voluptatum numquam qui laborum voluptatibus! Doloribus accusantium
-            adipisci vero velit ex ipsam. Ut id nulla eum dicta alias voluptates
-            cum saepe et ipsam repellat!
+            🌈 Information of {infoData?.type} type : Lorem ipsum dolor sit,
+            amet consectetur adipisicing elit. Eligendi soluta, nesciunt quasi
+            iste molestiae consequuntur, sit possimus in voluptatem quam sed,
+            ullam aperiam? Voluptatibus quasi recusandae beatae modi nam sequi!
+            Sunt, dicta quasi harum magnam nemo ratione! Vel minus autem neque
           </Description>
-          <OverView>
-            <OverViewItem>
-              <span>Total Supply :</span>
-              <span>{priceInfo?.total_supply}</span>
-            </OverViewItem>
-            <OverViewItem>
-              <span>Max Supply :</span>
-              <span>{priceInfo?.max_supply}</span>
-            </OverViewItem>
-          </OverView>
+          <Overview>
+            <OverviewItem>
+              <span>Total Supply : </span>
+              <span>{priceData?.total_supply}</span>
+            </OverviewItem>
+            <OverviewItem>
+              <span>Max Supply : </span>
+              <span>{priceData?.max_supply}</span>
+            </OverviewItem>
+          </Overview>
+          <Tabs>
+            <Tab isActive={chartMatch !== null}>
+              <Link to={`/${coinId}/chart`}>Chart</Link>
+            </Tab>
+            <Tab isActive={priceMatch !== null}>
+              <Link to={`/${coinId}/price`}>Price</Link>
+            </Tab>
+          </Tabs>
         </>
       )}
+      <Outlet />
     </Wrapper>
   );
 };

@@ -1,5 +1,7 @@
 import { Outlet } from "react-router-dom";
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { darkTheme, lightTheme } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
   *{
@@ -24,8 +26,14 @@ const GlobalStyle = createGlobalStyle`
 function Root() {
   return (
     <>
-      <GlobalStyle />
-      <Outlet />
+      <ThemeProvider theme={lightTheme}>
+        <GlobalStyle />
+        <Outlet />
+        <ReactQueryDevtools
+          initialIsOpen={false}
+          buttonPosition="bottom-left"
+        />
+      </ThemeProvider>
     </>
   );
 }
