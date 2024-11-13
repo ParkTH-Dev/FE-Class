@@ -1,6 +1,6 @@
 import { DoublyLinkedList } from "./DoublyLinkedlist.mjs";
 
-class HashData {
+export class HashData {
   constructor(key, value) {
     this.key = key;
     this.value = value;
