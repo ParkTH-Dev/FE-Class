@@ -1,11 +1,29 @@
-import React from "react";
+import React, { ReactNode } from "react";
+import style from "../styles/index.module.css";
+import SearchableLayout from "./components/searchable-layout";
+import BookItem from "./components/book-item";
+import books from "@/mock/book.json";
 
-const Index = () => {
+const Home = () => {
   return (
-    <div>
-      <h1>index</h1>
-    </div>
+    <main className={style.container}>
+      <section>
+        <h3>지금 추천하는 도서</h3>
+        {books.map((book) => (
+          <BookItem key={book.id} {...book} />
+        ))}
+      </section>
+      <section>
+        <h3>등록된 모든 도서</h3>
+        {books.map((book) => (
+          <BookItem key={book.id} {...book} />
+        ))}
+      </section>
+    </main>
   );
 };
 
-export default Index;
+Home.getLayout = (page: ReactNode) => {
+  return <SearchableLayout>{page}</SearchableLayout>;
+};
+export default Home;
