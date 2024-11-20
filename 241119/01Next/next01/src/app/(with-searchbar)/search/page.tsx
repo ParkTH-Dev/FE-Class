@@ -1,13 +1,17 @@
-import React from "react";
+import ClientComponent from "@/app/components/client-component";
 
-export const Page = async ({
+export default function Page({
   searchParams,
 }: {
-  searchParams: Promise<{ q: string }>;
-}) => {
-  const { q } = await searchParams;
-  console.log(q);
-  return <div>Search Page : {q}</div>;
-};
-
-export default Page;
+  searchParams: { q?: string };
+}) {
+  const { q } = searchParams;
+  return (
+    <div>
+      Search Page : {q}
+      <ClientComponent>
+        <></>
+      </ClientComponent>
+    </div>
+  );
+}
