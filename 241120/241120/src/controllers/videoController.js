@@ -1,31 +1,13 @@
-const videos = [
-  {
-    id: 1,
-    title: "first video",
-    createdAt: "2 minutes age",
-    views: 1,
-    comment: 2,
-    rating: 5,
-  },
-  {
-    id: 2,
-    title: "Video #2",
-    createdAt: "6 minutes age",
-    views: 200,
-    comment: 12,
-    rating: 5,
-  },
-  {
-    id: 3,
-    title: "3 WhatUp",
-    createdAt: "11 minutes age",
-    views: 300,
-    comment: 22,
-    rating: 5,
-  },
-];
-export const trending = (req, res) => {
-  res.render("home", { pageTitle: "홈", videos });
+import Video from "../models/video";
+
+export const home = async (req, res) => {
+  try {
+    const videos = await Video.find({});
+    return res.render("home", { pageTitle: "홈", videos });
+  } catch (err) {
+    return res.render("server-error", { err });
+  }
+  console.log("start");
 };
 export const search = (req, res) => res.send("Search Video");
 
@@ -52,17 +34,21 @@ export const postEdit = (req, res) => {
 export const getUpload = (req, res) => {
   return res.render("upload", { pageTitle: "UploadVideo" });
 };
-export const postUpload = (req, res) => {
-  const { title } = req.body;
-  const newVideo = {
-    id: videos.length + 1,
+export const postUpload = async (req, res) => {
+  const { title, description, hashtags } = req.body;
+  const video = new Video({
     title,
-    createdAt: "just now",
-    views: 0,
-    comment: 0,
-    rating: 0,
-  };
-  videos.push(newVideo);
+    description,
+    createdAt: Date.now(),
+    hashtags: hashtags.split(",").map((word) => `#${word}`),
+    meta: {
+      views: 0,
+      rating: 0,
+    },
+  });
+  const dbVideo = await video.save();
+  console.log(dbVideo);
+
   return res.redirect("/");
 };
 
