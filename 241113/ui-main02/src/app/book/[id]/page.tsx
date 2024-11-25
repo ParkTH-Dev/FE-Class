@@ -1,4 +1,10 @@
+import { notFound } from "next/navigation";
 import style from "./page.module.css";
+
+// Static Parameter를 생성하는 함수
+export const generateStaticParams = () => {
+  return [{ id: "1" }, { id: "2" }, { id: "3" }, { id: "4" }];
+};
 
 const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const response = await fetch(
@@ -6,6 +12,9 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   );
 
   if (!response.ok) {
+    if (response.status === 404) {
+      notFound();
+    }
     return <div>오류가 발생했습니다...</div>;
   }
   const book = await response.json();

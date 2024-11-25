@@ -1,5 +1,5 @@
 import React from "react";
-import ClientComponent from "@/components/client-component";
+// import ClientComponent from "@/components/client-component";
 
 const Page = async ({
   searchParams,
@@ -11,9 +11,9 @@ const Page = async ({
   return (
     <div>
       Search 페이지 : {q}
-      <ClientComponent>
-        <></>
-      </ClientComponent>
+      {/* <ClientComponent> */}
+      <></>
+      {/* </ClientComponent> */}
     </div>
   );
 };

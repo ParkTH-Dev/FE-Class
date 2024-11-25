@@ -3,7 +3,7 @@ import ClientComponent from "@/app/components/client-component";
 export default function Page({
   searchParams,
 }: {
-  searchParams: { q?: string };
+  searchParams: { q: string };
 }) {
   const { q } = searchParams;
   return (
