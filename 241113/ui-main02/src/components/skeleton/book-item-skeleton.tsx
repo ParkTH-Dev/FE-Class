@@ -1,4 +1,5 @@
-import style from "./book-tiem-skeleton.module.css";
+import React from "react";
+import style from "./book-item-skeleton.module.css";
 
 const BookItemSkeleton = () => {
   return (
@@ -6,7 +7,7 @@ const BookItemSkeleton = () => {
       <div className={style.cover_img}></div>
       <div className={style.info_container}>
         <div className={style.title}></div>
-        <div className={style.subTitle}></div>
+        <div className={style.subtitle}></div>
         <br />
         <div className={style.author}></div>
       </div>

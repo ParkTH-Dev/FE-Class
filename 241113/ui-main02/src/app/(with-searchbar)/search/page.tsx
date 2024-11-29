@@ -1,7 +1,9 @@
-import BookItem from "@/components/book-item";
+import React, { Suspense } from "react";
 import { BookData } from "@/types";
+import BookItem from "@/components/book-item";
 import delay from "@/util/delay";
-import { Suspense } from "react";
+
+// export const dynamic = "force-static";
 
 const SearchResult = async ({ q }: { q: string }) => {
   // const { q } = await searchParams;
@@ -11,12 +13,12 @@ const SearchResult = async ({ q }: { q: string }) => {
     { cache: "force-cache" }
   );
   if (!response.ok) {
-    return <div>오류가 발생 했습니다...</div>;
+    return <div>오류가 발생했습니다...</div>;
   }
+
   const books: BookData[] = await response.json();
   return (
     <div>
-      <span>&quot;{q}&quot;</span>
       {books.map((book) => (
         <BookItem key={book.id} {...book} />
       ))}

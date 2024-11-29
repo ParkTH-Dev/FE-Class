@@ -1,4 +1,4 @@
-const delay = (ms: number) => {
+const delay = async (ms: number) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve("");

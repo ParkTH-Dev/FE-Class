@@ -4,7 +4,7 @@ import Searchbar from "../../components/searchbar";
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <div>
-      {/* <div>{new Date().toLocaleString()}</div>44 */}
+      {/* <div>{new Date().toLocaleString()}</div> */}
       <Searchbar />
       {children}
     </div>

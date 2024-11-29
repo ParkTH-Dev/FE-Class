@@ -7,10 +7,10 @@ import BookListSkeleton from "@/components/skeleton/book-list-skeleton";
 
 export const dynamic = "force-dynamic";
 
-// 특정 페이지의 유형을 강제로 스테틱 or 다이나믹 페이지로 설정하는 옵션들
-// 1. auto : 페이지 컴포넌트의 기본값을 보장
-// 2. force-dynamic : 페이지를 강제적으로 dynamic페이지로 설정
-// 3. force-static : 페이지를 강제적으로 static페이지로 설정
+// 특정페이지의 유형을 강제로 static, dynamic 페이지로 설정하도록 하는 옵션들
+// 1. auto : 페이지 컴포넌트의 기본값을 보장 => 강제
+// 2. force-dynamic : 페이지를 강제적으로 Dynamic 페이지로 설정
+// 3. force-static
 // 4. error
 
 const RecoBooks = async () => {
@@ -18,14 +18,12 @@ const RecoBooks = async () => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/random`,
     {
-      next: {
-        revalidate: 3,
-      },
+      cache: "no-store",
     }
   );
-  if (!response.ok) {
-    return <div>오류가 발생했습니다...</div>;
-  }
+  // if (!response.ok) {
+  //   return <div>오류가 발생했습니다...</div>;
+  // }
   const recoBooks: BookData[] = await response.json();
   return (
     <div>
@@ -40,11 +38,11 @@ const AllBooks = async () => {
   await delay(1500);
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book`,
-    { cache: "force-cache" }
+    { cache: "no-store" }
   );
-  if (!response.ok) {
-    return <div>오류가 발생했습니다...</div>;
-  }
+  // if (!response.ok) {
+  //   return <div>오류가 발생했습니다...</div>;
+  // }
   const allBooks: BookData[] = await response.json();
   return (
     <div>
@@ -66,7 +64,7 @@ const Home = async () => {
       </section>
       <section>
         <h3>등록된 모든 도서</h3>
-        <Suspense fallback={<BookListSkeleton count={12} />}>
+        <Suspense fallback={<BookListSkeleton count={10} />}>
           <AllBooks />
         </Suspense>
       </section>
