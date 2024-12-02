@@ -1,9 +1,9 @@
 import React from "react";
 import style from "./page.module.css";
 import { notFound } from "next/navigation";
-import { createReviewAction } from "@/actions/create-review-actions";
-import { ReviewData } from "@/types";
+import { BookData, ReviewData } from "@/types";
 import ReviewItem from "@/components/review-item";
+import ReviewEditor from "@/components/review-editor";
 
 // export const dynamicParams = false;
 
@@ -11,7 +11,8 @@ import ReviewItem from "@/components/review-item";
 
 const Booktail = async ({ bookId }: { bookId: string }) => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${bookId}`
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${bookId}`,
+    { cache: "force-cache" }
   );
 
   if (!response.ok) {
@@ -43,26 +44,18 @@ const Booktail = async ({ bookId }: { bookId: string }) => {
   );
 };
 
-const ReviewEditor = ({ bookId }: { bookId: string }) => {
-  return (
-    <section>
-      <form action={createReviewAction}>
-        <input type="text" name="bookId" value={bookId} hidden readOnly />
-        <input type="text" name="content" placeholder="리뷰내용" required />
-        <input type="text" name="author" placeholder="작성자" required />
-        <input type="submit" value="작성하기" />
-      </form>
-    </section>
-  );
-};
-
 export const generateStaticParams = () => {
   return [{ id: "1" }, { id: "2" }, { id: "3" }];
 };
 
 const ReviewList = async ({ bookId }: { bookId: string }) => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/review/book/${bookId}`
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/review/book/${bookId}`,
+    {
+      next: {
+        tags: [`review-${bookId}`],
+      },
+    }
   );
 
   if (!response.ok) {
@@ -77,6 +70,32 @@ const ReviewList = async ({ bookId }: { bookId: string }) => {
       ))}
     </section>
   );
+};
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) => {
+  const { id } = await params;
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${id}`,
+    { cache: "force-cache" }
+  );
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+  const book: BookData = await response.json();
+  return {
+    title: `${book.title} - 한입북스`,
+    description: `${book.description}`,
+    openGraph: {
+      title: `${book.title} - 한입북스`,
+      description: `${book.description}`,
+      images: [book.coverImgUrl],
+    },
+  };
 };
 
 const Page = async ({ params }: { params: Promise<{ id: string }> }) => {

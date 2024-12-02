@@ -1,6 +1,7 @@
 "use client";
 
-import { useActionState, useRef, useEffect } from "react";
+import { deleteReviewAction } from "@/actions/delete-review-action";
+import React, { useRef, useActionState, useEffect } from "react";
 
 const ReviewItemDeleteButton = ({
   reviewId,
@@ -10,12 +11,24 @@ const ReviewItemDeleteButton = ({
   bookId: number;
 }) => {
   const formRef = useRef<HTMLFormElement>(null);
-  const [state, formAction, isPending] = useActionState();
+  const [state, formAction, isPending] = useActionState(
+    deleteReviewAction,
+    null
+  );
+  useEffect(() => {
+    if (state && !state.status) {
+      alert(state.error);
+    }
+  }, [state]);
   return (
-    <form ref={formRef}>
+    <form ref={formRef} action={formAction}>
       <input type="text" name="reviewId" value={reviewId} hidden readOnly />
       <input type="text" name="bookId" value={bookId} hidden readOnly />
-      <div onClick={() => formRef.current?.requestSubmit()}>삭제하기</div>
+      {isPending ? (
+        <div>...</div>
+      ) : (
+        <div onClick={() => formRef.current?.requestSubmit()}>삭제하기</div>
+      )}
     </form>
   );
 };
