@@ -3,6 +3,8 @@ import morgan from "morgan";
 import rootRouter from "./routers/rootRouter";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
+import session from "express-session";
+import { localMiddleware } from "./middlewares";
 
 const app = express();
 const logger = morgan("dev");
@@ -11,6 +13,19 @@ app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views");
 app.use(logger);
 app.use(express.urlencoded({ extended: true }));
+app.use(
+  session({
+    secret: "Hello!",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+app.get("/add-one", (req, res, next) => {
+  req.session.specialUser += 1;
+  return res.send(`${req.session.id}`);
+});
+
+app.use(localMiddleware);
 app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
