@@ -1,0 +1,36 @@
+doctype html
+html(lang="ko")
+  head
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css"> 
+    title #{pageTitle} | #{siteName}
+    style.
+      nav ul {
+          display: flex;
+          gap: 4px;
+        }
+  body
+    header 
+      h1=pageTitle
+      nav
+        ul 
+          li
+            a(href="/") Home
+          if loggedIn
+            li 
+              a(href="/users/logout") Log Out 
+            li
+              a(href="/videos/upload") Upload Video
+            li
+              a(href="/my-profile") #{loggedInUser.name}의 Profile
+            li
+              a(href="/users/edit") Edit Profile
+          else
+            li
+              a(href="/login") Login
+            li
+              a(href="/join") Join
+          li
+            a(href="/search") Search
+    main
+      block content
+    include partials/footer.pug
